@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!-- (Directory.Build.props) -->
+	
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<AssemblyName>OutfitsIncluded</AssemblyName>
+		<PackageId>Saffron.OutfitsIncluded</PackageId>
+		<RootNamespace>OutfitsIncluded</RootNamespace>
+		<Version>0.1.0</Version>
+	</PropertyGroup>
+
+	<!-- Mod Properties -->
+	<PropertyGroup>
+		<Title>Outfits Included</Title>
+		<Description>Base mod for outfit packs.</Description>
+		<SupportedContent>ALL</SupportedContent>
+	</PropertyGroup>
+
+	<!-- Build Options -->
+	<PropertyGroup>
+		<RepackDLLs>true</RepackDLLs>
+		<GenerateModYAML>false</GenerateModYAML>
+		<CopyBuildToMods>false</CopyBuildToMods>
+		<CopyBuildToReleases>false</CopyBuildToReleases>
+		<OutfitPack>false</OutfitPack>
+	</PropertyGroup>
+
+	<!-- Additional References -->
+	<ItemGroup>
+		<ProjectReference Include="..\_SaffronUtils\_SaffronUtils.csproj">
+			<Private>True</Private>
+			<ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+		</ProjectReference>
+	</ItemGroup>
+
+	<!-- Common Properties -->
+	<Import Project="..\Project.Build.props" />
+	<Import Project="..\Project.Build.props.oniRefs" />
+	
+	
+	<!-- Overrides -->
+
+
+	
+</Project>

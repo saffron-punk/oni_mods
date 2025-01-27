@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!-- (Directory.Build.props) -->
+
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<AssemblyName>ONIModTemplate</AssemblyName>
+		<PackageId>Saffron.$(AssemblyName)</PackageId>
+		<Version>0.1.0</Version>
+		<RootNamespace>ONIModTemplate</RootNamespace>
+	</PropertyGroup>
+
+	<!-- Mod Properties -->
+	<PropertyGroup>
+		<Title>ONIModTemplate</Title>
+		<Description>Description.</Description>
+		<SupportedContent>ALL</SupportedContent>
+	</PropertyGroup>
+
+	<!-- Build Options -->
+	<PropertyGroup>
+		<RepackDLLs>true</RepackDLLs>
+		<GenerateModYAML>true</GenerateModYAML>
+		<CopyBuildToMods>true</CopyBuildToMods>
+		<CopyBuildToReleases>true</CopyBuildToReleases>
+		<OutfitPack>false</OutfitPack>
+	</PropertyGroup>
+
+	<!-- Project References -->
+	<!--<ItemGroup>-->
+		<!--<ProjectReference Include="$(SolutionDir)_SaffronUtils\_SaffronUtils.csproj" />-->
+		<!--<Import Project="$(SolutionDir)Project.Build.props.oniRefs" />-->
+	<!--</ItemGroup>-->
+
+	<!-- Common Properties -->
+	<Import Project="$(SolutionDir)Project.Build.props" />
+
+	<!-- Overrides -->
+
+
+</Project>

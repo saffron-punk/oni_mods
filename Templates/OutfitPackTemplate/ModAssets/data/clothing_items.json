@@ -1,0 +1,11 @@
+﻿{
+	"items": [
+		// {
+		// 	"id": "asp_atmo_helmet_saffron",
+		// 	"category": "AtmoSuitHelmet",
+		// 	"kanim": "asp_atmo_helmet_saffron_kanim", // optional; defaults to id + "_kanim"
+		// 	"name": "Saffron Atmo Helmet",
+		// 	"description": "A saffron-colored atmo helmet."
+		// }
+	]
+}

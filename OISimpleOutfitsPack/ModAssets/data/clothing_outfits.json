@@ -1,0 +1,16 @@
+{
+	"outfits": [
+		{
+			"id": "saffron_sop_suit_yellow",
+			"type": "AtmoSuit",
+			"name": "Saffron Atmo Suit",
+			"items": [
+				"saffron_sop_helmet_yellow",
+				"saffron_sop_body_yellow",
+				"saffron_sop_gloves_yellow",
+				"saffron_sop_belt_yellow",
+				"saffron_sop_shoes_yellow"
+			]
+		}
+	]
+}
