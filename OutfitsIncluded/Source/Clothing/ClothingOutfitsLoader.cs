@@ -32,16 +32,8 @@ namespace OutfitsIncluded.Clothing
 				return null;
 			}
 			
-#if DEBUG
-			foreach (var outfit in data.outfits)
-			{
-				Log.ObjectData(outfit);
-			}
-#endif
-
-			Log.Info($"All outfits: {data.outfits.Count}");
 			List<ClothingOutfitData> validOutfits = data.outfits.FindAll(x => x.IsValid());
-			Log.Info($"Valid outfits: {validOutfits.Count}");
+			Log.Info($"Outfits loaded (valid/total): {validOutfits.Count}/{data.outfits.Count}");
 
 			return validOutfits;
 		}

@@ -24,26 +24,28 @@ namespace OutfitsIncluded.Patches
 
 		private static void AddItemsToSupplyCloset()
 		{
-			List<ClothingItemData> items = Core.OutfitsIncluded.GetClothingItemsList();
-			if (items == null) { return; }
-
-			foreach (ClothingItemData item in items)
+			foreach (OutfitPacks.OutfitPack outfitPack in OIMod.OutfitPacks)
 			{
-				string subcategory = item.Subcategory;
-				if (subcategory.IsNullOrWhiteSpace()) { continue; }
-				
-				if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
-					subcategory, out HashSet<string> blueprintIds))
+				List<ClothingItemData> items = outfitPack.GetClothingItems();
+				if (items == null) { continue; }
+				foreach (ClothingItemData item in items)
 				{
-					Log.Error($"Blueprint Ids set for subcategory '{subcategory}' not found.");
-					continue;
+					string subcategory = item.Subcategory;
+					if (subcategory.IsNullOrWhiteSpace()) { continue; }
+
+					if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
+						subcategory, out HashSet<string> blueprintIds))
+					{
+						Log.Error($"Blueprint Ids set for subcategory '{subcategory}' not found.");
+						continue;
+					}
+					if (!blueprintIds.Add(item.Id))
+					{
+						Log.Error($"Duplicate blueprint id: '{item.Id}'.");
+						continue;
+					}
+					Log.Info($"{item.Id} added to supply closet. Subcategory={subcategory}.");
 				}
-				if (!blueprintIds.Add(item.Id))
-				{
-					Log.Error($"Duplicate blueprint id: '{item.Id}'.");
-					continue;
-				}
-				Log.Info($"{item.Id} added to supply closet. Subcategory={subcategory}.");
 			}
 		}
 	}

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using static OutfitsIncluded.Clothing.CategoryMaps;
 using _SaffronUtils;
+using KMod;
+using OutfitsIncluded.Core;
 
 namespace OutfitsIncluded.Clothing
 {
@@ -16,15 +18,17 @@ namespace OutfitsIncluded.Clothing
 		public string Subcategory { get; private set; }
 		public ClothingOutfitUtility.OutfitType OutfitType { get; private set; }
 		public string Kanim { get; private set; }
+		
 
-		private ClothingItemResource resource;
+		private ClothingItemResource _resource;
 
 		[JsonConstructor]
 		public ClothingItemData(string id = "",
 					   string category = "",
 					   string subcategory = "",
 					   string kanim = "",
-					   string stringId = "")
+					   string name = "",
+					   string description = "")
 		{
 			if (id.IsNullOrWhiteSpace())
 			{
@@ -85,25 +89,39 @@ namespace OutfitsIncluded.Clothing
 			}
 			OutfitType = outfitType;
 
-			// TODO: get string ID & parse name/description
+			if (name.IsNullOrWhiteSpace())
+			{
+				Name = id;
+			} else
+			{
+				Name = name;
+			}
+
+			if (description.IsNullOrWhiteSpace())
+			{
+				Description = "";
+			} else
+			{
+				Description = description;
+			}
 		}
 
 		public ClothingItemResource GetResource()
 		{
 			if (!IsValid()) return null;
-			if (resource == null)
-			{
-				resource = new ClothingItemResource(
+			if (_resource == null)
+			{				
+				_resource = new ClothingItemResource(
 					Id,
-					Id, // TODO: name
-					Id, // TODO: description
+					GetLocalizedName(),
+					GetLocalizedDescription(),
 					OutfitType,
 					Category,
 					PermitRarity.Universal,
 					Kanim,
 					DlcManager.AVAILABLE_ALL_VERSIONS);
 			}
-			return resource;
+			return _resource;
 		}
 
 	}

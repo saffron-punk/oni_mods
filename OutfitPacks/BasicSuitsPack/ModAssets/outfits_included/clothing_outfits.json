@@ -1,0 +1,143 @@
+{
+	"outfits": [
+		{
+			"id": "bsp_blue_gold_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic Blue and Gold Atmo Suit",
+			"items": [
+				"bsp_blue_atmo_helmet",
+				"bsp_blue_atmo_body",
+				"bsp_gold_atmo_gloves",
+				"bsp_gold_atmo_belt",
+				"bsp_darkgray_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_blue_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic Blue Outfit",
+			"items": [
+				"bsp_blue_top",
+				"bsp_blue_pants",
+				"bsp_blue_gloves",
+				"bsp_blue_shoes"
+			]
+		},
+		{
+			"id": "bsp_red_gold_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic Red and Gold Atmo Suit",
+			"items": [
+				"bsp_red_atmo_helmet",
+				"bsp_red_atmo_body",
+				"bsp_red_atmo_gloves",
+				"bsp_gold_atmo_belt",
+				"bsp_darkgray_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_red_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic Red Outfit",
+			"items": [
+				"bsp_red_top",
+				"bsp_red_pants",
+				"bsp_red_gloves",
+				"bsp_red_shoes"
+			]
+		},
+		{
+			"id": "bsp_darkgray_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic Gray Atmo Suit",
+			"items": [
+				"bsp_darkgray_atmo_helmet",
+				"bsp_darkgray_atmo_body",
+				"bsp_darkgray_atmo_gloves",
+				"bsp_darkgray_atmo_belt",
+				"bsp_darkgray_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_darkgray_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic Gray Outfit",
+			"items": [
+				"bsp_darkgray_top",
+				"bsp_darkgray_pants",
+				"bsp_darkgray_gloves",
+				"bsp_darkgray_shoes"
+			]
+		},
+		{
+			"id": "bsp_teal_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic Teal Atmo Suit",
+			"items": [
+				"bsp_teal_atmo_helmet",
+				"bsp_teal_atmo_body",
+				"bsp_teal_atmo_gloves",
+				"bsp_silver_atmo_belt",
+				"bsp_darkgray_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_teal_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic Teal Outfit",
+			"items": [
+				"bsp_teal_top",
+				"bsp_teal_pants",
+				"bsp_teal_gloves",
+				"bsp_teal_shoes"
+			]
+		},
+		{
+			"id": "bsp_white_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic White Atmo Suit",
+			"items": [
+				"bsp_white_atmo_helmet",
+				"bsp_white_atmo_body",
+				"bsp_white_atmo_gloves",
+				"bsp_white_atmo_belt",
+				"bsp_white_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_white_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic White Outfit",
+			"items": [
+				"bsp_white_top",
+				"bsp_white_pants",
+				"bsp_white_gloves",
+				"bsp_white_shoes"
+			]
+		},
+		{
+			"id": "bsp_yellow_atmosuit_outfit",
+			"type": "AtmoSuit",
+			"name": "Basic Yellow Atmo Suit",
+			"items": [
+				"bsp_yellow_atmo_helmet",
+				"bsp_yellow_atmo_body",
+				"bsp_yellow_atmo_gloves",
+				"bsp_yellow_atmo_belt",
+				"bsp_darkgray_atmo_shoes"
+			]
+		},
+		{
+			"id": "bsp_yellow_clothing_outfit",
+			"type": "Clothing",
+			"name": "Basic White Outfit",
+			"items": [
+				"bsp_yellow_top",
+				"bsp_yellow_pants",
+				"bsp_yellow_gloves",
+				"bsp_yellow_shoes"
+			]
+		}
+
+	]
+}

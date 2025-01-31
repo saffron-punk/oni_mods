@@ -33,50 +33,56 @@ namespace OutfitsIncluded.Patches
 			{
 				Log.Info("ClothingOutfits_Constructor_Patch.Postfix()");
 
-				ClothingOutfits clothingOutfits = __instance;
-				if (clothingOutfits == null)
+				ClothingOutfits clothingOutfitsDb = __instance;
+				if (clothingOutfitsDb == null)
 				{
-					Log.Error("ClothingOutfits_Constructor_Patch: ClothingOutfits is null.");
+					Log.Error("ClothingOutfits_Constructor_Patch: clothingOutfitsDb is null.");
 					return;
 				}
 
-				ClothingItems clothingItems = items_resource;
-				if (clothingItems == null)
+				ClothingItems allClothingItems = items_resource;
+				if (allClothingItems == null)
 				{
-					Log.Error("ClothingOutfits_Constructor_Patch: ClothingItems is null.");
+					Log.Error("ClothingOutfits_Constructor_Patch: allClothingItems is null.");
 					return;
 				}
 
-				AddOutfitsToDatabase(clothingOutfits, clothingItems);
+				AddOutfitsToDatabase(clothingOutfitsDb, allClothingItems);
 			}
 		}
 
-		private static void AddOutfitsToDatabase(ClothingOutfits clothingOutfits,
-										  ClothingItems clothingItems)
+		private static void AddOutfitsToDatabase(
+			ClothingOutfits clothingOutfitsDb,
+			ClothingItems allClothingItems)
 		{
-			List<ClothingOutfitData> outfits = Core.OutfitsIncluded.GetClothingOutfitsList();
-			if (outfits == null) { return; }
-
-			foreach (ClothingOutfitData outfit in outfits)
+			foreach (OutfitPacks.OutfitPack outfitPack in OIMod.OutfitPacks)
 			{
-				if (!AreOutfitItemsValid(outfit, clothingItems)) { continue; }
+				List<ClothingOutfitData> outfits = outfitPack.GetClothingOutfits();
+				if (outfits == null) { continue; }
 
-				ClothingOutfitResource resource = outfit.GetResource();
-				if (resource == null) { continue; }
-				clothingOutfits.resources.Add(resource);
+				foreach (ClothingOutfitData outfit in outfits)
+				{
+					if (!AreOutfitItemsValid(outfit, allClothingItems)) { continue; }
+
+					ClothingOutfitResource resource = outfit.GetResource();
+					if (resource == null) { continue; }
+					clothingOutfitsDb.resources.Add(resource);
+				}
 			}
 		}
 
-		private static bool AreOutfitItemsValid(ClothingOutfitData outfit, ClothingItems allClothingItems)
+		private static bool AreOutfitItemsValid(
+			ClothingOutfitData outfit,
+			ClothingItems allClothingItems)
 		{
 			bool isValid = true;
 			foreach (string itemId in outfit.Items)
 			{
-				// Don't break on failure. We want to report all errors.
+				// We won't break on failure, so we can report all errors.
 				ClothingItemResource itemResource = allClothingItems.resources.Find(x => x.Id == itemId);
 				if (itemResource == null)
 				{
-					Log.Error($"Item '{itemId}' not found for outfit '{outfit.Id}'");
+					Log.Error($"Item '{itemId}' not found for '{outfit}'");
 					isValid = false;
 				}
 				else if (itemResource.outfitType != outfit.OutfitType)

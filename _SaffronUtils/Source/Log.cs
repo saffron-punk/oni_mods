@@ -39,7 +39,7 @@ namespace _SaffronUtils
 #endif
 		}
 
-		public static void ObjectData(object obj)
+		public static void PrintObject(object obj)
 		{
 #if DEBUG
 			Debug.Log($"{_modTag} {obj}:");
@@ -52,5 +52,12 @@ namespace _SaffronUtils
 			}
 #endif
 		}
+
+		public static void PrintDict(Dictionary<string, string> dict)
+		{
+			if (dict == null) { Info("null"); return; }
+			Info(string.Join(Environment.NewLine, dict.Select(a => $"{a.Key}: {a.Value}")));
+		}
+
 	}
 }

@@ -7,10 +7,13 @@
     <File Path="Project.Build.props" />
     <File Path="Project.Build.props.oniRefs" />
   </Folder>
-  <Project Path="OIBasicOutfitsPack/OIBasicOutfitsPack.csproj" Id="64cc7906-d4ae-465c-a48f-68e27b098a77" />
-  <Project Path="OISimpleOutfitsPack/OISimpleOutfitsPack.csproj" Id="ac0b6330-4728-4ac8-8018-587ca026df61" />
+  <Project Path="OutfitPacks/BasicSuitsPack/BasicSuitsPack.csproj" Id="64cc7906-d4ae-465c-a48f-68e27b098a77" />
   <Project Path="OutfitsIncluded/OutfitsIncluded.csproj" Id="1d8acad0-e1e7-bf90-7482-0b0849531a3e" />
-  <Project Path="Templates/OutfitPackTemplate/OutfitPackTemplate.csproj" Id="37514431-506e-4c68-9d4b-fe0f488b4deb" />
-  <Project Path="Templates/ONIModTemplate/ONIModTemplate.csproj" Id="17992c17-d93c-4124-b27b-e5dbee1cfaa6" />
+  <Project Path="Templates/OutfitPackTemplate/OutfitPackTemplate.csproj" Id="37514431-506e-4c68-9d4b-fe0f488b4deb">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+  <Project Path="Templates/ONIModTemplate/ONIModTemplate.csproj" Id="17992c17-d93c-4124-b27b-e5dbee1cfaa6">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
   <Project Path="_SaffronUtils/_SaffronUtils.csproj" Id="59f12aec-641e-47df-85f3-c0748c08e652" />
 </Solution>

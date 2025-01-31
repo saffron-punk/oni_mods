@@ -31,27 +31,30 @@ namespace OutfitsIncluded.Patches
 			{
 				Log.Info("ClothingItems_Constructor_Patch.Postfix()");
 
-				ClothingItems clothingItems = __instance;
-				if (clothingItems == null)
+				ClothingItems clothingItemsDb = __instance;
+				if (clothingItemsDb == null)
 				{
 					Log.Error("ClothingItems_Constructor_Patch: ClothingItems is null.");
 					return;
 				}
 
-				AddItemsToDatabase(clothingItems);
+				AddItemsToDatabase(clothingItemsDb);
 			}
 		}
 
-		private static void AddItemsToDatabase(ClothingItems clothingItems)
+		private static void AddItemsToDatabase(ClothingItems clothingItemsDb)
 		{
-			List<ClothingItemData> items = Core.OutfitsIncluded.GetClothingItemsList();
-			if (items == null) { return;  }
-
-			foreach (ClothingItemData item in items)
+			foreach(OutfitPacks.OutfitPack outfitPack in OIMod.OutfitPacks)
 			{
-				ClothingItemResource resource = item.GetResource();
-				if (resource == null) { continue;  }
-				clothingItems.resources.Add(resource);
+				List<ClothingItemData> items = outfitPack.GetClothingItems();
+				if (items == null) { continue; }
+
+				foreach (ClothingItemData item in items)
+				{
+					ClothingItemResource resource = item.GetResource();
+					if (resource == null) { continue; }
+					clothingItemsDb.resources.Add(resource);
+				}
 			}
 		}
 	}

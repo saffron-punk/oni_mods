@@ -29,24 +29,14 @@ namespace OutfitsIncluded.Clothing
 
 			if (data == null || data.items == null)
 			{
-				Log.Error($"No items found in {filePath}.");
+				Log.Warning($"No clothing items found in {filePath}.");
 				return null;
 			}
 
-#if DEBUG
-			foreach (var item in data.items)
-			{
-				Log.ObjectData(item);
-			}
-#endif
+			List<ClothingItemData> validItems = data.items.FindAll(x => x.IsValid());
+			Log.Info($"Clothing items loaded (valid/total): {validItems.Count}/{data.items.Count}");
 
-			Log.Info($"All clothing items: {data.items.Count}");
-			List<ClothingItemData> validClothingItems = data.items.FindAll(x => x.IsValid());
-			Log.Info($"Valid clothing items: {validClothingItems.Count}");
-
-			return validClothingItems;
+			return validItems;
 		}
-
-
 	}
 }

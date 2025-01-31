@@ -20,7 +20,8 @@ namespace OutfitsIncluded.Clothing
 		[JsonConstructor]
 		public ClothingOutfitData(string id = "",
 							string type = "",
-							string[] items = null)
+							string[] items = null,
+							string name = "")
 		{
 			if (id.IsNullOrWhiteSpace())
 			{
@@ -35,7 +36,7 @@ namespace OutfitsIncluded.Clothing
 			if (!Enum.TryParse<ClothingOutfitUtility.OutfitType>(type,
 							out ClothingOutfitUtility.OutfitType outfitType))
 			{
-				RegisterError($"Unable to find OutfitType with name '{type}'");
+				RegisterError($"Unable to find OutfitType='{type}'");
 				return;
 			}
 			else
@@ -49,6 +50,8 @@ namespace OutfitsIncluded.Clothing
 				return;
 			}
 			Items = items;
+
+			Name = name ?? Id;
 		}
 
 		public ClothingOutfitResource GetResource()
@@ -59,7 +62,7 @@ namespace OutfitsIncluded.Clothing
 				_resource = new ClothingOutfitResource(
 					Id,
 					Items,
-					Id, // TODO: name
+					GetLocalizedName(),
 					OutfitType);
 			}
 			return _resource;

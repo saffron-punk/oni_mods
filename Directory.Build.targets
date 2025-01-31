@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-	
-	<!-- Clean -->
-	<!--<Target Name="Clean">
-		<Message Text="Cleaning build folders..." Importance="High" />
-		<RemoveDir Directories="
-				   $(ModsTargetPath);" />
-		<RemoveDir 
-			Directories="$(ReleasesTargetPath)"	
-			Condition="'$(Configuration)' == 'Release'" />
-	</Target>-->
-	
 	
 	<!-- Generate mod yaml files -->
 	<Target Name="GenerateYAML" AfterTargets="Build" Condition="'$(GenerateModYAML)' == 'true'">
@@ -42,8 +30,10 @@
 						$(TargetDir)\**\YamlDotNet.dll;
 						$(TargetDir)\**\System.*;
 						$(TargetDir)\**\ImGui.NET.dll;
+						$(TargetDir)\**\ImGui.dll;
 						$(TargetDir)\**\Ionic.Zip.dll;
 						$(TargetDir)\**\Unity*.dll;
+						$(TargetDir)\**\*Support.dll;
 						$(TargetDir)\**\LibNoiseDotNet.dll;
 						$(TargetDir)\**\Microsoft.*" />
 		</ItemGroup>
@@ -72,9 +62,6 @@
 		<BuiltFiles 
 			Include="$(TargetDir)mod_info.yaml;" 
 			Condition="Exists('$(TargetDir)mod_info.yaml')" />
-		<BuiltFiles 
-			Include="$(TargetDir)OutfitsIncluded.dll" 
-			Condition="'$(OutfitPack)' == 'true'" />
 	</ItemGroup>
 	
 	

@@ -18,8 +18,8 @@ namespace OutfitsIncluded.Patches
 			public static void Prefix()
 			{
 				Log.Info("Db_Initialize_Patch.Prefix()");
-				ClothingItemsPatch.Patch(Core.OutfitsIncluded.HarmonyInstance);
-				ClothingOutfitsPatch.Patch(Core.OutfitsIncluded.HarmonyInstance);
+				ClothingItemsPatch.Patch(Core.OIMod.HarmonyInstance);
+				ClothingOutfitsPatch.Patch(Core.OIMod.HarmonyInstance);
 			}
 
 			public static void Postfix()
