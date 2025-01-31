@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<!-- Common Properties -->
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<Prefer32Bit>false</Prefer32Bit>
+		<AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<Prefer32Bit>false</Prefer32Bit>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<!-- Common Mod Properties -->
+	<PropertyGroup>
+		<MinimumSupportedBuild>$(TargetGameVersion)</MinimumSupportedBuild>
+		<APIVersion>2</APIVersion>
+	</PropertyGroup>
+
+	<!-- Copyright -->
+	<PropertyGroup>
+		<CurrentYear>$([System.DateTime]::Now.ToString(`yyyy`))</CurrentYear>
+		<Copyright>Copyright ©$(Authors) $(CurrentYear)</Copyright>
+	</PropertyGroup>
+
+	<!-- Target Dirs -->
+	<PropertyGroup>
+		<ProjectDirName>$(Title.Replace('"','').Replace(";","").Replace(":","").Replace(" ", ""))</ProjectDirName>
+		<VersionDirName>$(ProjectDirName)__$(Version)__$(MinimumSupportedBuild)</VersionDirName>
+
+		<!--<OutputPath>$(SolutionDir)$(CommonOutputDir)\$(AssemblyName)\</OutputPath>-->
+		<ModsTargetPath>$(GameModDir)\$(AssemblyName)_dev\</ModsTargetPath>
+		<ReleasesTargetPath>$(SolutionDir)$(CommonReleasesDir)\$(ProjectDirName)\$(VersionDirName)\</ReleasesTargetPath>
+	</PropertyGroup>
+
+	<!-- Task Packages -->
+	<ItemGroup Condition="'$(RepackDLLs)' == 'true'">
+		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(GenerateModYAML)' == 'true'">
+		<PackageReference Include="Cairath.ONIMetadataFileGenerator" Version="1.0.0" />
+	</ItemGroup>
+	
+</Project>

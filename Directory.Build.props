@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<Import Condition=" !Exists('Directory.Build.props.user') " Project="Directory.Build.props.default" />
+	<Import Condition=" Exists('Directory.Build.props.user') " Project="Directory.Build.props.user" />
+
+	<!-- Common Project Properties -->
+	<PropertyGroup>
+		<Authors>Saffron</Authors>
+		<RepositoryUrl>https://github.com/saffron-ink/oni_mods</RepositoryUrl>
+		<!--<CommonOutputDir>__output</CommonOutputDir>-->
+		<CommonObjDir>__obj</CommonObjDir>
+		<CommonReleasesDir>_Releases</CommonReleasesDir>
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+
+		<!--<BaseIntermediateOutputPath>$(SolutionDir)$(CommonObjDir)\$(AssemblyName)\</BaseIntermediateOutputPath>-->
+	</PropertyGroup>
+
+	<!-- ONI Versions -->
+	<PropertyGroup>
+		<Jan25Hotfix3>650327</Jan25Hotfix3>
+		<Jan25Hotfix4>651155</Jan25Hotfix4>
+		<!--Latest-->
+		<TargetGameVersion>$(Jan25Hotfix4)</TargetGameVersion>
+	</PropertyGroup>
+
+	
+</Project>

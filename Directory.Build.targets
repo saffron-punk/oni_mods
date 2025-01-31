@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	
+	<!-- Generate mod yaml files -->
+	<Target Name="GenerateYAML" AfterTargets="Build" Condition="'$(GenerateModYAML)' == 'true'">
+		<GenerateMetadataFiles
+			OutputPath="$(TargetDir)"
+			Title="$(Title)"
+			Description="$(Description)"
+			StaticID="$(PackageId)"
+			SupportedContent="$(SupportedContent)"
+			MinimumSupportedBuild="$(MinimumSupportedBuild)"
+			Version="$(Version)"
+			APIVersion="$(APIVersion)"
+        />
+	</Target>
+
+	<!-- Merge dlls -->
+	<Target Name="ILRepack" AfterTargets="Build" Condition="'$(RepackDLLs)' == 'true'">
+		<ItemGroup>
+			<InputAssemblies Include="$(TargetPath)" />
+			<InputAssemblies
+					Include="
+						$(TargetDir)\*.dll"
+					Exclude="
+						$(TargetPath); 
+						$(TargetDir)\**\0Harmony.dll; 
+						$(TargetDir)\**\_public.dll;
+						$(TargetDir)\**\Newtonsoft.Json;
+						$(TargetDir)\**\YamlDotNet.dll;
+						$(TargetDir)\**\System.*;
+						$(TargetDir)\**\ImGui.NET.dll;
+						$(TargetDir)\**\ImGui.dll;
+						$(TargetDir)\**\Ionic.Zip.dll;
+						$(TargetDir)\**\Unity*.dll;
+						$(TargetDir)\**\*Support.dll;
+						$(TargetDir)\**\LibNoiseDotNet.dll;
+						$(TargetDir)\**\Microsoft.*" />
+		</ItemGroup>
+
+		<ILRepack
+		  TargetPlatformVersion="v4"
+		  TargetKind="SameAsPrimaryAssembly"
+		  InputAssemblies="@(InputAssemblies)"
+		  Wildcards="true"
+		  LibraryPath="$(GameLibsDir)"
+		  Parallel="true"
+		  OutputFile="$(TargetPath)"/>
+	</Target>
+
+	<!-- ModAssets -->
+	<ItemGroup>
+		<ModAssets 
+			Include="ModAssets\*.*;ModAssets\**\*.*;"
+			Condition="Exists('ModAssets')" />
+		<BuiltFiles 
+			Include="$(TargetDir)$(TargetName).dll" 
+			Condition="Exists('$(TargetDir)$(TargetName).dll') And '$(OutfitPack)' == 'false'" />
+		<BuiltFiles 
+			Include="$(TargetDir)mod.yaml" 
+			Condition="Exists('$(TargetDir)mod.yaml')" />
+		<BuiltFiles 
+			Include="$(TargetDir)mod_info.yaml;" 
+			Condition="Exists('$(TargetDir)mod_info.yaml')" />
+	</ItemGroup>
+	
+	
+	<!-- Copy build to the ONI mods folder -->
+	<Target
+		Name="CopyBuildToMods"
+		AfterTargets="ILRepack"
+		Condition="'$(CopyBuildToMods)' == 'true'">
+
+		<Message Text="Copying to ONI mods -> $(ModsTargetPath)" Importance="High" />
+
+		<RemoveDir Directories="$(ModsTargetPath);" />
+		<MakeDir Directories="$(ModsTargetPath);" />
+		
+		<Copy
+		  SourceFiles="@(BuiltFiles)"
+		  DestinationFolder="$(ModsTargetPath)"
+		  SkipUnchangedFiles="false" />
+
+		<Copy 
+			SourceFiles="@(ModAssets)" 
+			DestinationFolder="$(ModsTargetPath)\%(RecursiveDir)"
+			SkipUnchangedFiles="false" />
+	</Target>
+
+	<!-- Copy to Releases -->
+	<Target 
+		Name="CopyToReleases" 
+		AfterTargets="ILRepack"
+		Condition="'$(CopyBuildToReleases)' == 'true' And '$(Configuration)' == 'Release'">
+
+		<Message Text="Copying to releases -> $(ReleasesTargetPath)" Importance="High"/>
+
+		<RemoveDir Directories="$(ReleasesTargetPath);" />
+		<MakeDir Directories="$(ReleasesTargetPath);" />
+		
+		<!--<MakeDir Directories="$(ReleasesTargetPath)"/>-->
+
+		<Copy
+		  SourceFiles="@(BuiltFiles)"
+		  DestinationFolder="$(ReleasesTargetPath)"/>
+
+		<Copy
+			SourceFiles="@(ModAssets)"
+			DestinationFolder="$(ReleasesTargetPath)\%(RecursiveDir)"
+			SkipUnchangedFiles="false" />
+	</Target>
+</Project>
