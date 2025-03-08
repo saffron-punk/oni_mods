@@ -264,13 +264,8 @@ lib
 __obj/
 __output/
 _Releases/
-OutfitPacks/BasicSuitsPack
-OutfitPacks/TestingSuitsPack
-
-OutfitPacks/InkscapeExtensions/cmd.txt
-OutfitPacks/InkscapeExtensions/__pycache__
-!OutfitPacks/InkscapeExtensions/onispritetools/lib/
-OutfitPacks/InkscapeExtensions/onispritetools/lib/__pycache__
 
 ONISpriteTools/onispritetools/__pycache__
+!ONISpriteTools/onispritetools/lib/
+ONISpriteTools/onispritetools/lib/__pycache__
 ONISpriteTools/cmd.txt
