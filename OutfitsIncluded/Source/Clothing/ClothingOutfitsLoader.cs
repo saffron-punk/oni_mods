@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SaffronLib;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-using _SaffronUtils;
-using Database;
 
 namespace OutfitsIncluded.Clothing
 {
@@ -31,7 +29,7 @@ namespace OutfitsIncluded.Clothing
 				Log.Error($"No outfits found in {filePath}.");
 				return null;
 			}
-			
+
 			List<ClothingOutfitData> validOutfits = data.outfits.FindAll(x => x.IsValid());
 			Log.Info($"Outfits loaded (valid/total): {validOutfits.Count}/{data.outfits.Count}");
 

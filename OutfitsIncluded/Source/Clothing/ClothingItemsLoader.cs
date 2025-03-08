@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SaffronLib;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-using _SaffronUtils;
-using Database;
-using static STRINGS.UI.CODEX;
 
 namespace OutfitsIncluded.Clothing
 {

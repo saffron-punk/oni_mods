@@ -1,25 +1,19 @@
 ﻿using Database;
+using Newtonsoft.Json;
+using SaffronLib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using static OutfitsIncluded.Clothing.CategoryMaps;
-using _SaffronUtils;
-using KMod;
-using OutfitsIncluded.Core;
 
 namespace OutfitsIncluded.Clothing
 {
 	public class ClothingItemData : ClothingData
 	{
 		public PermitCategory Category { get; private set; }
-		public string Subcategory { get; private set; }
 		public ClothingOutfitUtility.OutfitType OutfitType { get; private set; }
 		public string Kanim { get; private set; }
-		
 
+		private string _subcategory { get; set; }
 		private ClothingItemResource _resource;
 
 		[JsonConstructor]
@@ -32,7 +26,7 @@ namespace OutfitsIncluded.Clothing
 		{
 			if (id.IsNullOrWhiteSpace())
 			{
-				RegisterError("No id provided for clothing item.");
+				MakeInvalid("No id provided for clothing item.");
 				return;
 			}
 			else
@@ -42,7 +36,7 @@ namespace OutfitsIncluded.Clothing
 
 			if (!Enum.TryParse<PermitCategory>(category, out PermitCategory permitCategory))
 			{
-				RegisterError($"Unable to find PermitCategory with name '{category}'");
+				MakeInvalid($"Unable to find PermitCategory with name '{category}'");
 				return;
 			}
 			else
@@ -50,22 +44,8 @@ namespace OutfitsIncluded.Clothing
 				Category = permitCategory;
 			}
 
-			if (subcategory.IsNullOrWhiteSpace())
-			{
-				if (!DefaultSubcategories.TryGetValue(Category, out string defaultSubcategory))
-				{
-					RegisterError($"No default subcategory found for category {Category}");
-					return;
-				}
-				else
-				{
-					Subcategory = defaultSubcategory;
-				}
-			}
-			else
-			{
-				Subcategory = subcategory;
-			}
+			// If blank or invalid, will change to default subcategory later.
+			_subcategory = subcategory;
 
 			if (kanim.IsNullOrWhiteSpace())
 			{
@@ -76,15 +56,16 @@ namespace OutfitsIncluded.Clothing
 				Kanim = kanim;
 			}
 
+			// TODO: Put in try/catch block
 			if (Assets.GetAnim(Kanim) == null)
 			{
-				RegisterError($"No kanim found with name '{Kanim}'");
+				MakeInvalid($"No kanim found with name '{Kanim}'");
 				return;
 			}
 
 			if (!DefaultOutfitTypes.TryGetValue(Category, out ClothingOutfitUtility.OutfitType outfitType))
 			{
-				RegisterError($"No OutfitType found for category {Category}");
+				MakeInvalid($"No OutfitType found for category {Category}");
 				return;
 			}
 			OutfitType = outfitType;
@@ -92,7 +73,8 @@ namespace OutfitsIncluded.Clothing
 			if (name.IsNullOrWhiteSpace())
 			{
 				Name = id;
-			} else
+			}
+			else
 			{
 				Name = name;
 			}
@@ -100,7 +82,8 @@ namespace OutfitsIncluded.Clothing
 			if (description.IsNullOrWhiteSpace())
 			{
 				Description = "";
-			} else
+			}
+			else
 			{
 				Description = description;
 			}
@@ -110,7 +93,7 @@ namespace OutfitsIncluded.Clothing
 		{
 			if (!IsValid()) return null;
 			if (_resource == null)
-			{				
+			{
 				_resource = new ClothingItemResource(
 					Id,
 					GetLocalizedName(),
@@ -124,5 +107,29 @@ namespace OutfitsIncluded.Clothing
 			return _resource;
 		}
 
+		public HashSet<string> GetSupplyClosetItemIdsSet()
+		{
+			HashSet<string> itemIdsSet = null;
+			if (_subcategory.IsNullOrWhiteSpace() ||
+				!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
+						_subcategory, out itemIdsSet))
+			{
+				if (!DefaultSubcategories.TryGetValue(
+					Category, out string defaultSubcategory))
+				{
+					Log.Error($"Provided subcategory ({_subcategory}) is null or invalid, " +
+						$"and no default subcategory found for category {Category}.");
+					return null;
+				}
+				Log.Info($"Using default subcategory for {Id}.");
+				if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
+					defaultSubcategory, out itemIdsSet))
+				{
+					Log.Error($"Item ids set for subcategory '{defaultSubcategory}' not found.");
+					return null;
+				}
+			}
+			return itemIdsSet;
+		}
 	}
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Display toggles</name>
+    <id>saffron.displaytoggles</id>
+    <label>Frames</label>
+    <param
+        type="bool"
+        name="show_pivots"
+        gui-text="Pivots">
+            True
+    </param>
+    <param
+        type="bool"
+        name="show_boxes"
+        gui-text="Bounding boxes">
+            True
+    </param>
+    <param
+        type="bool"
+        name="show_extra_elems"
+        gui-text="Non-sprite elements">
+            True
+    </param>
+    <param
+        type="bool"
+        name="show_sprite_groups"
+        gui-text="Sprites">
+            True
+    </param>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">display_toggles.py</command>
+    </script>
+</inkscape-extension>

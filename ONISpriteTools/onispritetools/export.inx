@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Export</name>
+    <id>saffron.export</id>
+     <param name="export_type" type="notebook">
+        <page name="export_type_scml" gui-text="SCML">
+            <label>Export SCML to directory set in config.</label>
+        </page>
+        <page name="export_type_kanim" gui-text="KANIM">
+            <label>Export KANIM to directory set in config.</label>
+        </page>
+        <page name="export_type_mod" gui-text="Mod">
+            <label>Create a mod prototype.</label>
+            <param type="path" name="mod_dir_path" gui-text="Folder" mode="folder" />
+            <param type="string" name="mod_id" gui-text="Mod ID" />
+        </page>
+    </param>
+    <param type="string" name="export_names_list" gui-text="Restrict exports to" />
+    <param type="bool" name="use_palettes" gui-text="Apply palettes" />
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">export.py</command>
+    </script>
+</inkscape-extension>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Clean up doc</name>
+    <id>saffron.cleanupdoc</id>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">clean_up_doc.py</command>
+    </script>
+</inkscape-extension>

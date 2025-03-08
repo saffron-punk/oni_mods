@@ -1,10 +1,6 @@
-﻿using _SaffronUtils;
-using OutfitsIncluded.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OutfitsIncluded.Core;
+using SaffronLib;
+
 
 namespace OutfitsIncluded.Clothing
 {
@@ -39,7 +35,7 @@ namespace OutfitsIncluded.Clothing
 			}
 			else
 			{
-				RegisterWarning($"String not found for ID={GetStringIdName()}");
+				LogWarning($"String not found for ID={GetStringIdName()}");
 				return Name;
 			}
 		}
@@ -53,7 +49,7 @@ namespace OutfitsIncluded.Clothing
 			}
 			else
 			{
-				RegisterWarning($"String not found for ID={GetStringIdDescription()}");
+				LogWarning($"String not found for ID={GetStringIdDescription()}");
 				locDesc = Description;
 			}
 
@@ -65,7 +61,7 @@ namespace OutfitsIncluded.Clothing
 
 			if (descAttr.IsNullOrWhiteSpace() || OutfitPack.Name.IsNullOrWhiteSpace())
 			{
-				RegisterWarning("Unable to add description attribution.");
+				LogWarning("Unable to add description attribution.");
 			}
 			else
 			{
@@ -78,12 +74,12 @@ namespace OutfitsIncluded.Clothing
 			return locDesc;
 		}
 
-		protected void RegisterError(string message)
+		protected void MakeInvalid(string message)
 		{
 			Log.Error($"Error loading '{Id ?? "null"}': {message}");
 			_valid = false;
 		}
-		protected void RegisterWarning(string message)
+		protected void LogWarning(string message)
 		{
 			Log.Status($"Warning: '{Id ?? "null"}': {message}");
 		}

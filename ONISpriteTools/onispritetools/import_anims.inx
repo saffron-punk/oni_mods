@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Import anims</name>
+    <id>saffron.importanims</id>
+    <param name="action_type" type="notebook">
+        <page name="action_type_import_file" gui-text="Load from file">
+            <label>(Not yet implemented)</label>
+        </page>
+        <page name="action_type_import_folder" gui-text="Load from folder">
+            <param type="path" name="anim_dir_path" gui-text="Folder" mode="folder">anims/</param>
+            <param name="folder_import_type" type="optiongroup" appearance="radio" gui-text="Import...">
+                <option value="folder_import_type_random" default="true">Random anims/keyframes</option>
+                <option value="folder_import_type_selected">Containing selected frames</option>
+            </param>
+        </page>
+        <page name="action_type_refresh_selected" gui-text="Refresh">
+            <label>Refresh all previews.</label>
+        </page>
+    </param>
+    <param name="clone_visible_only" type="bool" gui-text="Use visible symbol layers only">false</param>
+    <param name="max_keyframes" type="int" min="1" max="20" gui-text="Max keyframes">1</param>
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">import_anims.py</command>
+    </script>
+</inkscape-extension>

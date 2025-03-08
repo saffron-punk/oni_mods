@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!-- (Directory.Build.props) -->
+
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<AssemblyName>SaffronLib</AssemblyName>
+		<PackageId>Saffron.SaffronLib</PackageId>
+		<Version>0.1.0</Version>
+		<RootNamespace>SaffronLib</RootNamespace>
+	</PropertyGroup>
+
+	<!-- Mod Properties -->
+	<PropertyGroup>
+		<Title>Saffron Utils</Title>
+		<Description>Utility functions for Saffron's mods.</Description>
+		<SupportedContent>ALL</SupportedContent>
+	</PropertyGroup>
+
+	<!-- Build Options -->
+	<PropertyGroup>
+		<RepackDLLs>false</RepackDLLs>
+		<GenerateModYAML>false</GenerateModYAML>
+		<CopyBuildToMods>false</CopyBuildToMods>
+		<CopyBuildToReleases>false</CopyBuildToReleases>
+		<OutfitPack>false</OutfitPack>
+	</PropertyGroup>
+
+	<!-- Common Properties -->
+	<Import Project="..\Project.Build.props" />
+	<Import Project="..\Project.Build.props.oniRefs" />
+
+	<!-- Overrides -->
+
+
+
+	<!-- Generated -->
+
+
+</Project>

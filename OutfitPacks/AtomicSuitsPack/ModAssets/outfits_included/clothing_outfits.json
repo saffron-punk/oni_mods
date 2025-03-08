@@ -1,0 +1,368 @@
+{
+	"outfits": [
+		// ---------------------------------------------------
+		// ADVENTURER ATMO OUTFITS
+		// ---------------------------------------------------
+		{
+			"id": "asp_red_adventurer_atmosuit",
+			"items": [
+				"asp_red_adventurer_atmo_helmet",
+				"asp_red_adventurer_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Red)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_pink_adventurer_atmosuit",
+			"items": [
+				"asp_pink_adventurer_atmo_helmet",
+				"asp_pink_adventurer_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Pink)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_yellow_adventurer_atmosuit",
+			"items": [
+				"asp_yellow_adventurer_atmo_helmet",
+				"asp_yellow_adventurer_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Yellow)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_blue_adventurer_atmosuit",
+			"items": [
+				"asp_blue_adventurer_atmo_helmet",
+				"asp_blue_adventurer_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Blue)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_orange_adventurer_atmosuit",
+			"items": [
+				"asp_orange_adventurer_atmo_helmet",
+				"asp_orange_adventurer_atmo_body",
+				"asp_tanksandstone_tanks_atmo_belt",
+				"asp_moohide_gripwell_atmo_shoes",
+				"asp_wool_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Orange)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_gravitas_adventurer_atmosuit",
+			"items": [
+				"asp_gravitas_adventurer_atmo_helmet",
+				"asp_gravitas_adventurer_atmo_body",
+				"asp_tankgreen_tanks_atmo_belt",
+				"asp_steel_gripwell_atmo_shoes",
+				"asp_wool_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Gravitas)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_radbolt_adventurer_atmosuit",
+			"items": [
+				"asp_radbolt_adventurer_atmo_helmet",
+				"asp_radbolt_adventurer_atmo_body",
+				"asp_tankcarbon_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_carbon_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Radbolt)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_bionic_adventurer_atmosuit",
+			"items": [
+				"asp_bionic_adventurer_atmo_helmet",
+				"asp_bionic_adventurer_atmo_body",
+				"asp_tankcarbon_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_carbon_gripwell_atmo_gloves"
+			],
+			"name": "Adventurer Atmo Outfit (Bionic)",
+			"type": "AtmoSuit"
+		},
+		// ---------------------------------------------------
+		// ADVENTURER CLOTHING OUTFITS
+		// ---------------------------------------------------
+		{
+			"id": "asp_red_adventurer_outfit",
+			"items": [
+				"asp_red_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Red)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_pink_adventurer_outfit",
+			"items": [
+				"asp_pink_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Pink)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_yellow_adventurer_outfit",
+			"items": [
+				"asp_yellow_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Yellow)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_blue_adventurer_outfit",
+			"items": [
+				"asp_blue_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Blue)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_orange_adventurer_outfit",
+			"items": [
+				"asp_orange_adventurer_top",
+				"asp_moohide_gripwell_shoes",
+				"asp_wool_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Orange)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_gravitas_adventurer_outfit",
+			"items": [
+				"asp_gravitas_adventurer_top",
+				"asp_steel_gripwell_shoes",
+				"asp_wool_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Gravitas)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_radbolt_adventurer_outfit",
+			"items": [
+				"asp_radbolt_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_carbon_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Radbolt)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_bionic_adventurer_outfit",
+			"items": [
+				"asp_bionic_adventurer_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_carbon_gripwell_gloves"
+			],
+			"name": "Adventurer Jumpsuit Outfit (Bionic)",
+			"type": "Clothing"
+		},
+		// ---------------------------------------------------
+		// CADET ATMO OUTFITS
+		// ---------------------------------------------------
+		{
+			"id": "asp_red_cadet_atmosuit",
+			"items": [
+				"asp_red_cadet_atmo_helmet",
+				"asp_red_cadet_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Red)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_pink_cadet_atmosuit",
+			"items": [
+				"asp_pink_cadet_atmo_helmet",
+				"asp_pink_cadet_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Pink)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_yellow_cadet_atmosuit",
+			"items": [
+				"asp_yellow_cadet_atmo_helmet",
+				"asp_yellow_cadet_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Yellow)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_blue_cadet_atmosuit",
+			"items": [
+				"asp_blue_cadet_atmo_helmet",
+				"asp_blue_cadet_atmo_body",
+				"asp_tanksteel_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_moohide_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Blue)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_orange_cadet_atmosuit",
+			"items": [
+				"asp_orange_cadet_atmo_helmet",
+				"asp_orange_cadet_atmo_body",
+				"asp_tanksandstone_tanks_atmo_belt",
+				"asp_moohide_gripwell_atmo_shoes",
+				"asp_wool_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Orange)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_gravitas_cadet_atmosuit",
+			"items": [
+				"asp_gravitas_cadet_atmo_helmet",
+				"asp_gravitas_cadet_atmo_body",
+				"asp_tankgreen_tanks_atmo_belt",
+				"asp_steel_gripwell_atmo_shoes",
+				"asp_wool_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Gravitas)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_radbolt_cadet_atmosuit",
+			"items": [
+				"asp_radbolt_cadet_atmo_helmet",
+				"asp_radbolt_cadet_atmo_body",
+				"asp_tankcarbon_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_carbon_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Radbolt)",
+			"type": "AtmoSuit"
+		},
+		{
+			"id": "asp_bionic_cadet_atmosuit",
+			"items": [
+				"asp_bionic_cadet_atmo_helmet",
+				"asp_bionic_cadet_atmo_body",
+				"asp_tankcarbon_tanks_atmo_belt",
+				"asp_carbon_gripwell_atmo_shoes",
+				"asp_carbon_gripwell_atmo_gloves"
+			],
+			"name": "Cadet Atmo Outfit (Bionic)",
+			"type": "AtmoSuit"
+		},
+		// ---------------------------------------------------
+		// CADET CLOTHING OUTFITS
+		// ---------------------------------------------------
+		{
+			"id": "asp_red_cadet_outfit",
+			"items": [
+				"asp_red_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Red)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_pink_cadet_outfit",
+			"items": [
+				"asp_pink_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Pink)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_yellow_cadet_outfit",
+			"items": [
+				"asp_yellow_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Yellow)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_blue_cadet_outfit",
+			"items": [
+				"asp_blue_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_moohide_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Blue)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_orange_cadet_outfit",
+			"items": [
+				"asp_orange_cadet_top",
+				"asp_moohide_gripwell_shoes",
+				"asp_wool_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Orange)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_gravitas_cadet_outfit",
+			"items": [
+				"asp_gravitas_cadet_top",
+				"asp_steel_gripwell_shoes",
+				"asp_wool_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Gravitas)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_radbolt_cadet_outfit",
+			"items": [
+				"asp_radbolt_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_carbon_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Radbolt)",
+			"type": "Clothing"
+		},
+		{
+			"id": "asp_bionic_cadet_outfit",
+			"items": [
+				"asp_bionic_cadet_top",
+				"asp_carbon_gripwell_shoes",
+				"asp_carbon_gripwell_gloves"
+			],
+			"name": "Cadet Jumpsuit Outfit (Bionic)",
+			"type": "Clothing"
+		}
+	]
+}

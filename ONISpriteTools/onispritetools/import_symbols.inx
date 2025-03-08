@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Import symbols (SCML/KANIM)</name>
+    <id>saffron.importsymbols</id>
+
+    <!-- Select import format -->
+    <label>Import files</label>
+    <param name="import_format" type="notebook">
+        <page name="import_format_scml" gui-text="Import SCML">
+            <param
+                type="path"
+                name="scml_files"
+                gui-text="SCML file(s)"
+                mode="files"
+                filetypes="scml" />
+        </page>
+        <page name="import_format_kanim" gui-text="Import KANIM">
+            <param
+                type="path"
+                name="image_file"
+                gui-text="Image file"
+                mode="file"
+                filetypes="png" />
+            <param
+                type="path"
+                name="build_file"
+                gui-text="Build file"
+                mode="file"
+                filetypes="bytes,txt,prefab" />
+        </page>
+    </param>
+    <param name="import_name_override" type="string" gui-text="Import name override"></param>
+    <separator />
+
+    <!-- Symbol import options -->
+    <label>Symbols</label>
+    <param name="symbol_selection" type="notebook">
+        <page name="all" gui-text="All symbols">
+            <label>Import all symbols from file(s).</label>
+        </page>
+        <page name="specified" gui-text="Specified symbols only">
+            <param name="specified_symbols_list" type="string" appearance="multiline" gui-text="Symbols to import" />
+        </page>
+    </param>
+    <param name="rename_symbols_list" type="string" appearance="multiline" gui-text="Rename symbols" />
+    <separator />
+
+    <param name="existing_frame_mode" type="optiongroup" appearance="combo" gui-text="Existing frames">
+        <option value="existing_frame_mode_skip">Skip</option>
+        <option value="existing_frame_mode_append">Append</option>
+    </param>
+
+    <!-- Other options -->
+    <param name="create_exports" type="bool" gui-text="Create export(s)">false</param>
+    <param name="import_scale" type="float" precision="2" min="0" max="5" gui-text="Apply scale to images">1.0</param>
+
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">import_symbols.py</command>
+    </script>
+</inkscape-extension>

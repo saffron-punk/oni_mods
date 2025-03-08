@@ -1,11 +1,5 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OutfitsIncluded.Core;
-using _SaffronUtils;
+using SaffronLib;
 
 namespace OutfitsIncluded.Patches
 {

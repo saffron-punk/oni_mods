@@ -1,10 +1,8 @@
-﻿using Database;
-using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using OutfitsIncluded.Core;
+﻿using HarmonyLib;
 using OutfitsIncluded.Clothing;
-using _SaffronUtils;
+using OutfitsIncluded.Core;
+using SaffronLib;
+using System.Collections.Generic;
 
 namespace OutfitsIncluded.Patches
 {
@@ -30,21 +28,20 @@ namespace OutfitsIncluded.Patches
 				if (items == null) { continue; }
 				foreach (ClothingItemData item in items)
 				{
-					string subcategory = item.Subcategory;
-					if (subcategory.IsNullOrWhiteSpace()) { continue; }
-
-					if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
-						subcategory, out HashSet<string> blueprintIds))
+					HashSet<string> itemIdsSet = item.GetSupplyClosetItemIdsSet();
+					if (itemIdsSet == null)
 					{
-						Log.Error($"Blueprint Ids set for subcategory '{subcategory}' not found.");
+						Log.Error($"Error adding {item} to supply closet. " +
+							$"No item ids set found.");
 						continue;
 					}
-					if (!blueprintIds.Add(item.Id))
+					if (!itemIdsSet.Add(item.Id))
 					{
-						Log.Error($"Duplicate blueprint id: '{item.Id}'.");
+						Log.Error($"Error adding {item} to supply closet. " +
+							$"Duplicate item id: '{item.Id}'.");
 						continue;
 					}
-					Log.Info($"{item.Id} added to supply closet. Subcategory={subcategory}.");
+					Log.Info($"{item.Id} added to supply closet. ");
 				}
 			}
 		}

@@ -6,13 +6,13 @@
 		<AssemblyName>OutfitsIncluded</AssemblyName>
 		<PackageId>Saffron.OutfitsIncluded</PackageId>
 		<RootNamespace>OutfitsIncluded</RootNamespace>
-		<Version>0.2.0</Version>
+		<Version>0.3.0</Version>
 	</PropertyGroup>
 
 	<!-- Mod Properties -->
 	<PropertyGroup>
 		<Title>Outfits Included</Title>
-		<Description>Base mod for outfit packs.</Description>
+		<Description>Mod loader for Outfit Pack mods.</Description>
 		<SupportedContent>ALL</SupportedContent>
 	</PropertyGroup>
 
@@ -27,15 +27,18 @@
 
 	<!-- Additional References -->
 	<ItemGroup>
-		<ProjectReference Include="..\_SaffronUtils\_SaffronUtils.csproj">
+		<ProjectReference Include="$(SolutionDir)SaffronLib\SaffronLib.csproj">
 			<Private>True</Private>
 			<ReferenceOutputAssembly>True</ReferenceOutputAssembly>
 		</ProjectReference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="ModAssets\" />
+	</ItemGroup>
 
 	<!-- Common Properties -->
-	<Import Project="..\Project.Build.props" />
-	<Import Project="..\Project.Build.props.oniRefs" />
+	<Import Project="$(SolutionDir)Project.Build.props" />
+	<Import Project="$(SolutionDir)Project.Build.props.oniRefs" />
 	
 	
 	<!-- Overrides -->

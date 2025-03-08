@@ -1,20 +1,14 @@
-﻿using _SaffronUtils;
-using _SaffronUtils.Source;
-using OutfitsIncluded.Clothing;
+﻿using OutfitsIncluded.Clothing;
 using OutfitsIncluded.Core;
-using System;
-using System.Collections;
+using SaffronLib;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OutfitsIncluded.OutfitPacks
 {
 	public class OutfitPack
 	{
-		public KMod.Mod Mod {  get; }
+		public KMod.Mod Mod { get; }
 		public string DirPath { get; }
 		private string _translationsPath { get; }
 
@@ -55,13 +49,30 @@ namespace OutfitsIncluded.OutfitPacks
 		private void LoadClothingItems()
 		{
 			string itemsFile = Path.Combine(DirPath, OIPaths.ClothingItemsFile);
-			_clothingItems = 
-				ClothingItemsLoader.LoadFromJSONFile(itemsFile) 
+			_clothingItems =
+				ClothingItemsLoader.LoadFromJSONFile(itemsFile)
 				?? new List<ClothingItemData>();
 			InjectOutfitPackRef(_clothingItems);
 			Log.Info($"{this}: {_clothingItems.Count} clothing item(s) loaded.");
 
+			RegisterClothingItems();
 			CreateClothingItemStrings();
+		}
+
+		private void RegisterClothingItems()
+		{
+			// Duplicate list to iterate so we can edit the main list.
+			List<ClothingItemData> clothingItemsCopy = new List<ClothingItemData>(_clothingItems);
+			foreach (var item in clothingItemsCopy)
+			{
+				if (OIMod.OIItemResources.ContainsKey(item.Id))
+				{
+					Log.Error($"Duplicate item ids found: {item.Id}");
+					_clothingItems.Remove(item);
+					continue;
+				}
+				OIMod.OIItemResources[item.Id] = item.GetResource();
+			}
 		}
 
 		private void CreateClothingItemStrings()
@@ -114,7 +125,6 @@ namespace OutfitsIncluded.OutfitPacks
 					+ outfit.Id.ToUpperInvariant();
 
 				outfitStrings[outfit.GetStringIdName()] = outfit.Name ?? outfit.Id;
-				outfitStrings[outfit.GetStringIdDescription()] = outfit.Description ?? outfit.Id;
 			}
 
 			AddStringsToTemplate(outfitStrings);
@@ -143,7 +153,7 @@ namespace OutfitsIncluded.OutfitPacks
 			}
 		}
 
-		private void AddLocalizedStringsToGame(Dictionary <string, string> originalStrings)
+		private void AddLocalizedStringsToGame(Dictionary<string, string> originalStrings)
 		{
 			Dictionary<string, string> localizedStrings = GetLocalizedStrings();
 			foreach (KeyValuePair<string, string> kvp in originalStrings)
@@ -155,7 +165,7 @@ namespace OutfitsIncluded.OutfitPacks
 				{
 					value = originalValue;
 				}
-				
+
 				Strings.Add(key, value);
 				//Log.Info($"Added string: {key}={value}; success={Strings.HasKey(key)}");
 			}

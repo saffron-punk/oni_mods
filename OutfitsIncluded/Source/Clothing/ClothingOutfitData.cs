@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Database;
 using Newtonsoft.Json;
-using _SaffronUtils;
-using Database;
+using System;
+using System.Collections.Generic;
 
 namespace OutfitsIncluded.Clothing
 {
 	public class ClothingOutfitData : ClothingData
 	{
-		
+
+
 		public ClothingOutfitUtility.OutfitType OutfitType { get; private set; }
-		public string[] Items { get; private set; }
+		public List<string> ItemIds { get; set; }
 
 		private ClothingOutfitResource _resource;
 
@@ -25,7 +22,7 @@ namespace OutfitsIncluded.Clothing
 		{
 			if (id.IsNullOrWhiteSpace())
 			{
-				RegisterError("No id provided.");
+				MakeInvalid("No id provided.");
 				return;
 			}
 			else
@@ -36,7 +33,7 @@ namespace OutfitsIncluded.Clothing
 			if (!Enum.TryParse<ClothingOutfitUtility.OutfitType>(type,
 							out ClothingOutfitUtility.OutfitType outfitType))
 			{
-				RegisterError($"Unable to find OutfitType='{type}'");
+				MakeInvalid($"Unable to find OutfitType='{type}'");
 				return;
 			}
 			else
@@ -46,10 +43,10 @@ namespace OutfitsIncluded.Clothing
 
 			if (items == null || items.Length == 0)
 			{
-				RegisterError("No items provided.");
+				MakeInvalid("No items provided.");
 				return;
 			}
-			Items = items;
+			ItemIds = new List<string>(items);
 
 			Name = name ?? Id;
 		}
@@ -61,11 +58,16 @@ namespace OutfitsIncluded.Clothing
 			{
 				_resource = new ClothingOutfitResource(
 					Id,
-					Items,
+					ItemIds.ToArray(),
 					GetLocalizedName(),
 					OutfitType);
 			}
 			return _resource;
+		}
+
+		public void AddItemId(string itemId)
+		{
+			ItemIds.Add(itemId);
 		}
 	}
 }

@@ -43,7 +43,7 @@
 		<VersionDirName>$(ProjectDirName)__$(Version)__$(MinimumSupportedBuild)</VersionDirName>
 
 		<!--<OutputPath>$(SolutionDir)$(CommonOutputDir)\$(AssemblyName)\</OutputPath>-->
-		<ModsTargetPath>$(GameModDir)\$(AssemblyName)_dev\</ModsTargetPath>
+		<ModsTargetPath>$(GameModDir)\$(AssemblyName)\</ModsTargetPath>
 		<ReleasesTargetPath>$(SolutionDir)$(CommonReleasesDir)\$(ProjectDirName)\$(VersionDirName)\</ReleasesTargetPath>
 	</PropertyGroup>
 

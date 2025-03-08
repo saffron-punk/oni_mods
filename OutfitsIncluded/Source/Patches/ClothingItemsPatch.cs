@@ -1,10 +1,9 @@
 ﻿using Database;
 using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using OutfitsIncluded.Core;
 using OutfitsIncluded.Clothing;
-using _SaffronUtils;
+using OutfitsIncluded.Core;
+using SaffronLib;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace OutfitsIncluded.Patches
@@ -44,7 +43,7 @@ namespace OutfitsIncluded.Patches
 
 		private static void AddItemsToDatabase(ClothingItems clothingItemsDb)
 		{
-			foreach(OutfitPacks.OutfitPack outfitPack in OIMod.OutfitPacks)
+			foreach (OutfitPacks.OutfitPack outfitPack in OIMod.OutfitPacks)
 			{
 				List<ClothingItemData> items = outfitPack.GetClothingItems();
 				if (items == null) { continue; }

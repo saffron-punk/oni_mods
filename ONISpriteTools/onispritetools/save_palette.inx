@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Save palette</name>
+    <id>saffron.savepalette</id>
+
+    <param type="string" name="palette_name" gui-text="Palette name" />
+    <param name="create_type" type="notebook">
+        <page name="create_type_new" gui-text="New palette">
+            <param type="bool" name="update_only" gui-text="Update only">False</param>
+        </page>
+        <page name="create_type_template" gui-text="From template palette">
+            <param type="string" name="template_palette_name" gui-text="Template palette name" />
+        </page>
+    </param>
+
+    <param type="bool" name="selected_only" gui-text="Selected only">False</param>
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">save_palette.py</command>
+    </script>
+</inkscape-extension>

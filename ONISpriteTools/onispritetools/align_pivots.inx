@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Align pivots</name>
+    <id>saffron.alignpivots</id>
+    <param name="tab" type="notebook">
+        <page name="align_pivots" gui-text="Align">
+            <param name="align_option" type="optiongroup" appearance="radio" gui-text="Align pivots by">
+                <option value="align_xy" default="true">Centered (selected frames)</option>
+                <option value="align_y">By Y (selected)</option>
+                <option value="align_x">By X (selected)</option>
+                <option value="align_matching">By matching pivots (all)</option>
+            </param>
+        </page>
+        <page name="duplicate" gui-text="Clone/Duplicate">
+            <param name="duplicate_type" type="optiongroup" appearance="combo" gui-text="Type">
+                <option value="clone" default="true">Clone</option>
+                <option value="duplicate">Duplicate</option>
+            </param>
+            <param name="duplicate_pos" type="optiongroup" appearance="combo" gui-text="Target">
+                <option value="inside_sprite_front" default="true">Sprite - Front</option>
+                <option value="inside_sprite_back">Sprite - Back</option>
+                <option value="over_sprite" default="true">Above Sprite</option>
+                <option value="under_sprite" default="true">Below Sprite</option>
+            </param>
+        </page>
+        <page name="move" gui-text="Move">
+            <param name="target_symbol" type="string" gui-text="Target symbol"></param>
+        </page>
+
+    </param>
+    <effect needs-live-preview="false">
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="ONI Sprite Tools"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">align_pivots.py</command>
+    </script>
+</inkscape-extension>

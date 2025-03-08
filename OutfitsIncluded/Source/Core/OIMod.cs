@@ -1,32 +1,32 @@
+using Database;
 using HarmonyLib;
 using KMod;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using _SaffronUtils;
-using OutfitsIncluded.Clothing;
-using Database;
 using OutfitsIncluded.OutfitPacks;
+using SaffronLib;
+using System.Collections.Generic;
 
-// Code for adding custom blueprints is based on Decor Pack A by Aki:
-// https://github.com/aki-art/ONI-Mods/blob/master/DecorPackA/
 
 namespace OutfitsIncluded.Core
 {
 	public class OIMod : UserMod2
 	{
 		public static Harmony HarmonyInstance;
+		public static Mod ModInstance;
 		public static string ModPath;
 
-		public static HashSet<OutfitPack> OutfitPacks;
+		public static OutfitPack OIOutfitPack;
+		public static List<OutfitPack> OutfitPacks;
+		public static List<OutfitRestorer> OutfitRestorers = new List<OutfitRestorer>();
+		public static Dictionary<string, ClothingItemResource> OIItemResources = new Dictionary<string, ClothingItemResource>();
 
 		public override void OnLoad(Harmony harmony)
 		{
 			HarmonyInstance = harmony;
+			ModInstance = mod;
 			ModPath = path;
 
 			Log.SetModName(mod.staticID);
-			
+
 			//base.OnLoad(harmony); // PatchAll()
 		}
 
@@ -40,7 +40,25 @@ namespace OutfitsIncluded.Core
 			}
 			Log.Info($"Found {OutfitPacks.Count} outfit packs.");
 
-			// TODO: Patch if outfit pack count > 0
+			foreach (OutfitPack outfitPack in OutfitPacks)
+			{
+				if (outfitPack.Mod == ModInstance)
+				{
+					OIOutfitPack = outfitPack;
+					break;
+				}
+			}
+
+			if (OIOutfitPack == null)
+			{
+				Log.Warning("No Outfits Included outfit pack found.");
+			}
+			else
+			{
+				// Ensure that this mod's items are always parsed last.
+				OutfitPacks.Remove(OIOutfitPack);
+				OutfitPacks.Add(OIOutfitPack);
+			}
 			harmony.PatchAll(assembly);
 		}
 	}

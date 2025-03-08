@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<!-- (Directory.Build.props) -->
+
+	<!-- Project Properties -->
+	<PropertyGroup>
+		<AssemblyName>AtomicSuitsPack</AssemblyName>
+		<PackageId>Saffron.$(AssemblyName)</PackageId>
+		<Version>0.1.0</Version>
+		<RootNamespace>AtomicSuitsPack</RootNamespace>
+	</PropertyGroup>
+
+	<!-- Mod Properties -->
+	<PropertyGroup>
+		<Title>Atomic Suits Pack</Title>
+		<Description>Dupe clothing and atmo suits inspired by Atomic Age pulp sci-fi. Requires Outfits Included.</Description>
+		<SupportedContent>ALL</SupportedContent>
+	</PropertyGroup>
+
+	<!-- Build Options -->
+	<PropertyGroup>
+		<RepackDLLs>false</RepackDLLs>
+		<GenerateModYAML>true</GenerateModYAML>
+		<CopyBuildToMods>true</CopyBuildToMods>
+		<CopyBuildToReleases>true</CopyBuildToReleases>
+		<OutfitPack>true</OutfitPack>
+	</PropertyGroup>
+
+	<!-- Additional References -->
+
+	<!-- (Project.Build.props) -->
+	<Import Project="$(SolutionDir)Project.Build.props" />
+
+
+	<!-- Overrides -->
+
+
+</Project>
