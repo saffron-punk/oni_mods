@@ -17,21 +17,21 @@ namespace OutfitsIncluded.Clothing
 		{
 			if (!File.Exists(filePath))
 			{
-				Log.Error($"File not found at path: {filePath}");
+				Log.WriteDebug($"No file found at path: {filePath}");
 				return null;
 			}
-			Log.Info($"Loading clothing items from {filePath}");
+			Log.WriteDebug($"Loading clothing items from {filePath}");
 			string json = FileUtils.LoadAsString(filePath);
 			var data = JsonConvert.DeserializeObject<ClothingItemDataList>(json);
 
 			if (data == null || data.items == null)
 			{
-				Log.Warning($"No clothing items found in {filePath}.");
+				Log.WriteWarning($"No clothing items found in {filePath}.");
 				return null;
 			}
 
 			List<ClothingItemData> validItems = data.items.FindAll(x => x.IsValid());
-			Log.Info($"Clothing items loaded (valid/total): {validItems.Count}/{data.items.Count}");
+			Log.WriteDebug($"Clothing items loaded (valid/total): {validItems.Count}/{data.items.Count}");
 
 			return validItems;
 		}

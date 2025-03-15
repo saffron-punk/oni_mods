@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	
-	<!-- Generate mod yaml files -->
-	<Target Name="GenerateYAML" AfterTargets="Build" Condition="'$(GenerateModYAML)' == 'true'">
-		<GenerateMetadataFiles
-			OutputPath="$(TargetDir)"
-			Title="$(Title)"
-			Description="$(Description)"
-			StaticID="$(PackageId)"
-			SupportedContent="$(SupportedContent)"
-			MinimumSupportedBuild="$(MinimumSupportedBuild)"
-			Version="$(Version)"
-			APIVersion="$(APIVersion)"
-        />
+	<!-- From Romen and Sgt_Imalas -->
+	<Target Name="GenerateModInfoYAML" AfterTargets="Build" Condition="'$(GenerateModYAML)' == 'true'">
+		<ItemGroup>
+			<ModInfoLines Include="minimumSupportedBuild: $(MinimumSupportedBuild)"/>
+			<ModInfoLines Include="version: $(Version)"/>
+			<ModInfoLines Include="APIVersion: 2"/>
+			<ModInfoLines Include="requiredDlcIds:" Condition="'$(RequiredDlcIds)' != ''"/>
+			<ModInfoLines Include="$([System.String]::Copy('$(RequiredDlcIds)').Insert(0,' - ').Replace(',','%0a- '))" Condition="'$(RequiredDlcIds)' != ''"/>
+			<ModInfoLines Include="forbiddenDlcIds:" Condition="'$(ForbiddenDlcIds)' != ''"/>
+			<ModInfoLines Include="$([System.String]::Copy('$(ForbiddenDlcIds)').Insert(0,' - ').Replace(',','%0a- '))" Condition="'$(ForbiddenDlcIds)' != ''"/>
+		</ItemGroup>
+		<WriteLinesToFile File="$(TargetDir)/mod_info.yaml" Overwrite="true" Lines="@(ModInfoLines)"/>
+	</Target>
+
+	<Target Name="GenerateModYAML" AfterTargets="Build" Condition="'$(GenerateModYAML)' == 'true'">
+		<ItemGroup>
+			<ModLines Include="title: $(Title)"/>
+			<ModLines Include="description: $(Description)"/>
+			<ModLines Include="staticID: $(PackageId)"/>
+		</ItemGroup>
+		<WriteLinesToFile File="$(TargetDir)/mod.yaml" Overwrite="true" Lines="@(ModLines)"/>
 	</Target>
 
 	<!-- Merge dlls -->
@@ -69,19 +77,26 @@
 		AfterTargets="ILRepack"
 		Condition="'$(CopyBuildToMods)' == 'true'">
 
-		<Message Text="Copying to ONI mods -> $(ModsTargetPath)" Importance="High" />
+		<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+			<ModsTargetDir>$(LocalModsTargetDir)</ModsTargetDir>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Configuration)' != 'Release'">
+			<ModsTargetDir>$(DevModsTargetDir)</ModsTargetDir>
+		</PropertyGroup>
 
-		<RemoveDir Directories="$(ModsTargetPath);" />
-		<MakeDir Directories="$(ModsTargetPath);" />
+		<Message Text="Copying to ONI mods -> $(ModsTargetDir)" Importance="High" />
+
+		<RemoveDir Directories="$(DevModsTargetDir);" />
+		<RemoveDir Directories="$(LocalModsTargetDir);" />
+		<MakeDir Directories="$(ModsTargetDir);"/>
 		
 		<Copy
 		  SourceFiles="@(BuiltFiles)"
-		  DestinationFolder="$(ModsTargetPath)"
+		  DestinationFolder="$(ModsTargetDir)"
 		  SkipUnchangedFiles="false" />
-
 		<Copy 
 			SourceFiles="@(ModAssets)" 
-			DestinationFolder="$(ModsTargetPath)\%(RecursiveDir)"
+			DestinationFolder="$(ModsTargetDir)\%(RecursiveDir)"
 			SkipUnchangedFiles="false" />
 	</Target>
 
@@ -96,8 +111,6 @@
 		<RemoveDir Directories="$(ReleasesTargetPath);" />
 		<MakeDir Directories="$(ReleasesTargetPath);" />
 		
-		<!--<MakeDir Directories="$(ReleasesTargetPath)"/>-->
-
 		<Copy
 		  SourceFiles="@(BuiltFiles)"
 		  DestinationFolder="$(ReleasesTargetPath)"/>
@@ -107,4 +120,16 @@
 			DestinationFolder="$(ReleasesTargetPath)\%(RecursiveDir)"
 			SkipUnchangedFiles="false" />
 	</Target>
+
+	<!-- Create zip file -->
+	<Target 
+		Name="CreateReleaseZip" 
+		AfterTargets="Build"
+		Condition="'$(CopyBuildToReleases)' == 'true' And '$(Configuration)' == 'Release'">
+		<Delete Files="$(ZipTargetPath);" />
+		<ZipDirectory
+            SourceDirectory="$(ReleasesZipPath)"
+            DestinationFile="$(ZipTargetPath)" />
+	</Target>
+
 </Project>

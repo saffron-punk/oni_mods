@@ -6,14 +6,16 @@
 		<AssemblyName>OutfitsIncluded</AssemblyName>
 		<PackageId>Saffron.OutfitsIncluded</PackageId>
 		<RootNamespace>OutfitsIncluded</RootNamespace>
-		<Version>0.3.0</Version>
+		<Version>0.4.0</Version>
 	</PropertyGroup>
 
 	<!-- Mod Properties -->
 	<PropertyGroup>
 		<Title>Outfits Included</Title>
 		<Description>Mod loader for Outfit Pack mods.</Description>
-		<SupportedContent>ALL</SupportedContent>
+		<!-- Add comma-separated IDs, ie DLC2_ID,DLC3_ID -->
+		<RequiredDlcIds></RequiredDlcIds>
+		<ForbiddenDlcIds></ForbiddenDlcIds>
 	</PropertyGroup>
 
 	<!-- Build Options -->

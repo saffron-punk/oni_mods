@@ -102,30 +102,30 @@ namespace OutfitsIncluded.Clothing
 					Category,
 					PermitRarity.Universal,
 					Kanim,
-					DlcManager.AVAILABLE_ALL_VERSIONS);
+					requiredDlcIds: null,
+					forbiddenDlcIds: null);
 			}
 			return _resource;
 		}
 
 		public HashSet<string> GetSupplyClosetItemIdsSet()
 		{
-			HashSet<string> itemIdsSet = null;
 			if (_subcategory.IsNullOrWhiteSpace() ||
 				!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
-						_subcategory, out itemIdsSet))
+						_subcategory, out HashSet<string> itemIdsSet))
 			{
 				if (!DefaultSubcategories.TryGetValue(
 					Category, out string defaultSubcategory))
 				{
-					Log.Error($"Provided subcategory ({_subcategory}) is null or invalid, " +
+					Log.WriteError($"Provided subcategory ({_subcategory}) is null or invalid, " +
 						$"and no default subcategory found for category {Category}.");
 					return null;
 				}
-				Log.Info($"Using default subcategory for {Id}.");
+				Log.WriteDebug($"Using default subcategory for {Id}.");
 				if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
 					defaultSubcategory, out itemIdsSet))
 				{
-					Log.Error($"Item ids set for subcategory '{defaultSubcategory}' not found.");
+					Log.WriteError($"Item ids set for subcategory '{defaultSubcategory}' not found.");
 					return null;
 				}
 			}

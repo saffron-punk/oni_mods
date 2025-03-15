@@ -10,7 +10,8 @@ namespace OutfitsIncluded.OutfitPacks
 	{
 		public KMod.Mod Mod { get; }
 		public string DirPath { get; }
-		private string _translationsPath { get; }
+		private string _translationsPath;
+		private bool _localizationUsed;
 
 		public string Id { get => Mod.staticID; }
 
@@ -53,10 +54,10 @@ namespace OutfitsIncluded.OutfitPacks
 				ClothingItemsLoader.LoadFromJSONFile(itemsFile)
 				?? new List<ClothingItemData>();
 			InjectOutfitPackRef(_clothingItems);
-			Log.Info($"{this}: {_clothingItems.Count} clothing item(s) loaded.");
+			Log.WriteDebug($"{this}: {_clothingItems.Count} clothing item(s) loaded.");
 
-			RegisterClothingItems();
 			CreateClothingItemStrings();
+			RegisterClothingItems();
 		}
 
 		private void RegisterClothingItems()
@@ -67,7 +68,7 @@ namespace OutfitsIncluded.OutfitPacks
 			{
 				if (OIMod.OIItemResources.ContainsKey(item.Id))
 				{
-					Log.Error($"Duplicate item ids found: {item.Id}");
+					Log.WriteError($"Duplicate item ids found: {item.Id}");
 					_clothingItems.Remove(item);
 					continue;
 				}
@@ -77,6 +78,7 @@ namespace OutfitsIncluded.OutfitPacks
 
 		private void CreateClothingItemStrings()
 		{
+			Log.WriteMethodName();
 			Dictionary<string, string> itemStrings = new Dictionary<string, string>();
 			foreach (ClothingItemData item in _clothingItems)
 			{
@@ -107,7 +109,7 @@ namespace OutfitsIncluded.OutfitPacks
 				ClothingOutfitsLoader.LoadFromJSONFile(outfitsFile)
 				?? new List<ClothingOutfitData>();
 			InjectOutfitPackRef(_clothingOutfits);
-			Log.Info($"{this}: {_clothingOutfits.Count} clothing outfit(s) loaded.");
+			Log.WriteDebug($"{this}: {_clothingOutfits.Count} clothing outfit(s) loaded.");
 
 			CreateClothingOutfitStrings();
 
@@ -141,7 +143,7 @@ namespace OutfitsIncluded.OutfitPacks
 		{
 			for (int i = 0; i < clothingDataList.Count; i++)
 			{
-				(clothingDataList[i] as ClothingData).OutfitPack = this;
+				(clothingDataList[i] as ClothingData).outfitPack = this;
 			}
 		}
 
@@ -167,7 +169,7 @@ namespace OutfitsIncluded.OutfitPacks
 				}
 
 				Strings.Add(key, value);
-				//Log.Info($"Added string: {key}={value}; success={Strings.HasKey(key)}");
+				Log.WriteTrace($"Added string: {key}={value}; success={Strings.HasKey(key)}");
 			}
 		}
 
@@ -180,13 +182,17 @@ namespace OutfitsIncluded.OutfitPacks
 				_localizedStrings = LocalizationUtils.LoadCustomStrings(_translationsPath);
 				if (_localizedStrings == null)
 				{
-					Log.Warning($"{this}: No localization found for code '{LocalizationUtils.GetLocaleCode()}'.");
+					string localeCode = LocalizationUtils.GetLocaleCode();
+					if (!localeCode.IsNullOrWhiteSpace())
+					{
+						Log.WriteWarning($"{this}: No localization found for code '{LocalizationUtils.GetLocaleCode()}'.");
+					}
 					_localizedStrings = new Dictionary<string, string>();
 				}
 				else
 				{
-					Log.Info($"{this}: Localization loaded: {_localizedStrings?.Count ?? null} entries");
-					Log.PrintDict(_localizedStrings);
+					Log.WriteDebug($"{this}: Localization loaded: {_localizedStrings?.Count ?? null} entries");
+					Log.WriteDict(_localizedStrings);
 				}
 			}
 			return _localizedStrings;
@@ -208,16 +214,16 @@ namespace OutfitsIncluded.OutfitPacks
 		private void PrintData()
 		{
 #if DEBUG
-			Log.Info(Name);
-			Log.Info($"\tClothing items:");
+			Log.WriteDebug(Name);
+			Log.WriteDebug($"\tClothing items:");
 			foreach (var item in _clothingItems)
 			{
-				Log.PrintObject(item);
+				Log.WriteObject(item);
 			}
-			Log.Info($"\tClothing outfits:");
+			Log.WriteDebug($"\tClothing outfits:");
 			foreach (var outfit in _clothingOutfits)
 			{
-				Log.PrintObject(outfit);
+				Log.WriteObject(outfit);
 			}
 #endif
 		}

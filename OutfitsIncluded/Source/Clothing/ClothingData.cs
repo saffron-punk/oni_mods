@@ -12,7 +12,7 @@ namespace OutfitsIncluded.Clothing
 		public string Description { get; protected set; }
 		public string StringIdBase { get; set; }
 
-		public OutfitPacks.OutfitPack OutfitPack { get; set; }
+		public OutfitPacks.OutfitPack outfitPack { get; set; }
 
 		public string GetStringIdName()
 		{
@@ -53,22 +53,34 @@ namespace OutfitsIncluded.Clothing
 				locDesc = Description;
 			}
 
+			string descAttrProp = "STRINGS.OUTFITS_INCLUDED.DESCRIPTION_ATTR";
+			if (outfitPack.Mod == OIMod.ModInstance)
+			{
+				descAttrProp = "STRINGS.OUTFITS_INCLUDED.SELF_DESCRIPTION_ATTR";
+			}
 			string descAttr = "";
-			if (Strings.TryGet("STRINGS.OUTFITS_INCLUDED.DESCRIPTION_ATTR", out StringEntry attrResult))
+			if (Strings.TryGet(descAttrProp, out StringEntry attrResult))
 			{
 				descAttr = attrResult.String;
 			}
 
-			if (descAttr.IsNullOrWhiteSpace() || OutfitPack.Name.IsNullOrWhiteSpace())
+			if (descAttr.IsNullOrWhiteSpace() || outfitPack.Name.IsNullOrWhiteSpace())
 			{
 				LogWarning("Unable to add description attribution.");
 			}
 			else
 			{
 				descAttr = descAttr
-					.Replace(OIConstants.OUTFIT_PACK_NAME_TAG, OutfitPack.Name)
+					.Replace(OIConstants.OUTFIT_PACK_NAME_TAG, outfitPack.Name)
 					.Replace(OIConstants.OUTFIT_PACK_COLOR_TAG, OIConstants.DefaultOutfitPackColor);
-				locDesc += "\n\n" + descAttr;
+				if (locDesc.Length > 0)
+				{
+					locDesc += "\n\n" + descAttr;
+				}
+				else
+				{
+					locDesc = descAttr;
+				}
 			}
 
 			return locDesc;
@@ -76,12 +88,12 @@ namespace OutfitsIncluded.Clothing
 
 		protected void MakeInvalid(string message)
 		{
-			Log.Error($"Error loading '{Id ?? "null"}': {message}");
+			Log.WriteError($"Error loading '{Id ?? "null"}': {message}");
 			_valid = false;
 		}
 		protected void LogWarning(string message)
 		{
-			Log.Status($"Warning: '{Id ?? "null"}': {message}");
+			Log.WriteInfo($"Warning: '{Id ?? "null"}': {message}");
 		}
 
 		public bool IsValid()

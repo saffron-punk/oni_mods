@@ -15,7 +15,7 @@ namespace OutfitsIncluded.Patches
 		{
 			public static void Postfix()
 			{
-				Log.Info("InventoryOrganization_GenerateSubCategories_Patch.Postfix()");
+				Log.WriteMethodName();
 				AddItemsToSupplyCloset();
 			}
 		}
@@ -31,17 +31,17 @@ namespace OutfitsIncluded.Patches
 					HashSet<string> itemIdsSet = item.GetSupplyClosetItemIdsSet();
 					if (itemIdsSet == null)
 					{
-						Log.Error($"Error adding {item} to supply closet. " +
+						Log.WriteError($"Error adding {item} to supply closet. " +
 							$"No item ids set found.");
 						continue;
 					}
 					if (!itemIdsSet.Add(item.Id))
 					{
-						Log.Error($"Error adding {item} to supply closet. " +
+						Log.WriteError($"Error adding {item} to supply closet. " +
 							$"Duplicate item id: '{item.Id}'.");
 						continue;
 					}
-					Log.Info($"{item.Id} added to supply closet. ");
+					Log.WriteDebug($"{item.Id} added to supply closet. ");
 				}
 			}
 		}

@@ -24,7 +24,7 @@ namespace SaffronLib
 				string translationsDir = TRANSLATIONS_DIR,
 				bool generateTemplate = true)
 		{
-			Log.Info($"Registering {root.Name} for translation...");
+			Log.WriteDebug($"Registering {root.Name} for translation...");
 			Localization.RegisterForTranslation(root);
 			string translationsPath = Path.Combine(modPath, translationsDir);
 			OverloadStrings(translationsPath);
@@ -37,7 +37,7 @@ namespace SaffronLib
 			string path = GetFilePathForCurrentLocale(translationsPath);
 			if (path.IsNullOrWhiteSpace()) { return; }
 			Localization.OverloadStrings(Localization.LoadStringsFile(path, false));
-			Log.Info($"Loaded translation file at {path}.");
+			Log.WriteDebug($"Loaded translation file at {path}.");
 		}
 
 		public static void GenerateTemplate(Type root, string translationsPath)
@@ -68,7 +68,7 @@ namespace SaffronLib
 			}
 			catch (Exception ex)
 			{
-				Log.Error($"Error loading custom strings from {translationsPath}: {ex}");
+				Log.WriteError($"Error loading custom strings from {translationsPath}: {ex}");
 				dict = null;
 			}
 			return dict;
@@ -82,7 +82,7 @@ namespace SaffronLib
 		{
 			if (dict == null)
 			{
-				Log.Error("GenerateCustomTemplate(): Dict is null.");
+				Log.WriteError("GenerateCustomTemplate(): Dict is null.");
 				return;
 			}
 
@@ -122,13 +122,13 @@ namespace SaffronLib
 				}
 			}
 
-			Log.Status($"Custom translations template created: {translationsPath}");
+			Log.WriteInfo($"Custom translations template created: {translationsPath}");
 		}
 
 		private static string GetFilePathForCurrentLocale(string translationsPath)
 		{
 			string code = Localization.GetLocale()?.Code;
-			Log.Info($"Code={code}");
+			Log.WriteDebug($"Code={code}");
 			if (code.IsNullOrWhiteSpace())
 			{
 				return null;

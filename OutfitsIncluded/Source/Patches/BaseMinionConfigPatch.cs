@@ -13,17 +13,17 @@ namespace OutfitsIncluded.Patches
 		{
 			public static void Postfix(GameObject __result)
 			{
-				Log.Info("BaseMinionConfig_BaseMinion_Patch: Postfix()");
+				Log.WriteMethodName();
 				GameObject go = __result;
 
 				if (go.IsNullOrDestroyed())
 				{
-					Log.Error("BaseMinion is null.");
+					Log.WriteError("BaseMinion is null.");
 					return;
 				}
 
 				go.AddOrGet<OutfitRestorer>();
-				Log.Info($"Added OutfitRestorer component to {go}");
+				Log.WriteDebug($"Added OutfitRestorer component to {go}");
 			}
 		}
 	}

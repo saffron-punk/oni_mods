@@ -29,19 +29,19 @@ namespace OutfitsIncluded.Patches
 			public static void Postfix(ClothingOutfits __instance,
 									   ClothingItems items_resource)
 			{
-				Log.Info("ClothingOutfits_Constructor_Patch.Postfix()");
+				Log.WriteMethodName();
 
 				ClothingOutfits clothingOutfitsDb = __instance;
 				if (clothingOutfitsDb == null)
 				{
-					Log.Error("ClothingOutfits_Constructor_Patch: clothingOutfitsDb is null.");
+					Log.WriteError("ClothingOutfits_Constructor_Patch: clothingOutfitsDb is null.");
 					return;
 				}
 
 				ClothingItems allClothingItems = items_resource;
 				if (allClothingItems == null)
 				{
-					Log.Error("ClothingOutfits_Constructor_Patch: allClothingItems is null.");
+					Log.WriteError("ClothingOutfits_Constructor_Patch: allClothingItems is null.");
 					return;
 				}
 
@@ -76,7 +76,7 @@ namespace OutfitsIncluded.Patches
 			if (!CategoryMaps.OutfitItemCategories.TryGetValue(
 				outfit.OutfitType, out List<PermitCategory> expectedItemCategories))
 			{
-				Log.Warning($"No expected categories found for outfit type={outfit.OutfitType}");
+				Log.WriteWarning($"No expected categories found for outfit type={outfit.OutfitType}");
 			}
 
 			var missingCategories = new List<PermitCategory>(expectedItemCategories);
@@ -88,12 +88,12 @@ namespace OutfitsIncluded.Patches
 				ClothingItemResource itemResource = allClothingItems.resources.Find(x => x.Id == itemId);
 				if (itemResource == null)
 				{
-					Log.Error($"Item '{itemId}' not found for '{outfit}'");
+					Log.WriteError($"Item '{itemId}' not found for '{outfit}'");
 					isValid = false;
 				}
 				else if (itemResource.outfitType != outfit.OutfitType)
 				{
-					Log.Error($"Mismatched outfit and item types: '{outfit.Id}'={outfit.OutfitType} and item '{itemId}'={itemResource.outfitType}.");
+					Log.WriteError($"Mismatched outfit and item types: '{outfit.Id}'={outfit.OutfitType} and item '{itemId}'={itemResource.outfitType}.");
 					isValid = false;
 				}
 				else
@@ -110,16 +110,13 @@ namespace OutfitsIncluded.Patches
 			// We will add empty placeholder items to outfits that are missing items in a category.
 			// Without doing this, outfits will behave correctly when applied to dupes,
 			// but, when edited, ONI will add the default items in place of missing items.
-			// Handling this here allows outfit packs to utilize OI's empty placeholder items
-			// without explicitly referencing their ids in clothing_outfits.json.
-			// EDIT: Empty items other than the atmo belt seem to cause visual bugs
-			// in the supply closet, so this will only replace a missing atmo belt for now.
-			Log.Info($"Outfit {outfit.Id} is missing {missingCategories.Count} categories");
+			// (For now, we will stick to the atmo belt. Plan to add others if needed in the future.)
+			Log.WriteTrace($"Outfit {outfit.Id} is missing {missingCategories.Count} categories");
 			foreach (PermitCategory category in missingCategories)
 			{
 				if (!OIConstants.EMPTY_CLOTHING_ITEM_IDS.TryGetValue(category, out string emptyItemId))
 				{
-					Log.Warning($"Unable to find empty item for missing category {category}.");
+					Log.WriteTrace($"Unable to find empty item for missing category {category}.");
 					continue;
 				}
 
@@ -127,11 +124,11 @@ namespace OutfitsIncluded.Patches
 				ClothingItemResource emptyItemResource = allClothingItems.resources.Find(x => x.Id == emptyItemId);
 				if (emptyItemResource == null)
 				{
-					Log.Warning($"No resource found for empty clothing item {emptyItemId}");
+					Log.WriteWarning($"No resource found for empty clothing item {emptyItemId}");
 					continue;
 				}
 
-				Log.Info($"\tAdding {emptyItemId} for {category}");
+				Log.WriteDebug($"\tAdding {emptyItemId} for {category}");
 				outfit.AddItemId(emptyItemId);
 			}
 			return true;

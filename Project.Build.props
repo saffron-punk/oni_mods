@@ -43,16 +43,15 @@
 		<VersionDirName>$(ProjectDirName)__$(Version)__$(MinimumSupportedBuild)</VersionDirName>
 
 		<!--<OutputPath>$(SolutionDir)$(CommonOutputDir)\$(AssemblyName)\</OutputPath>-->
-		<ModsTargetPath>$(GameModDir)\$(AssemblyName)\</ModsTargetPath>
-		<ReleasesTargetPath>$(SolutionDir)$(CommonReleasesDir)\$(ProjectDirName)\$(VersionDirName)\</ReleasesTargetPath>
+		<DevModsTargetDir>$(GameModDir)\Dev\$(AssemblyName)\</DevModsTargetDir>
+		<LocalModsTargetDir>$(GameModDir)\Local\$(AssemblyName)\</LocalModsTargetDir>
+		<ReleasesTargetPath>$(SolutionDir)$(CommonReleasesDir)\$(ProjectDirName)\$(VersionDirName)\$(ProjectDirName)\</ReleasesTargetPath>
+		<ReleasesZipPath>$(SolutionDir)$(CommonReleasesDir)\$(ProjectDirName)\$(VersionDirName)</ReleasesZipPath>
+		<ZipTargetPath>$(SolutionDir)$(CommonReleasesDir)\$(VersionDirName).zip</ZipTargetPath>
 	</PropertyGroup>
 
 	<!-- Task Packages -->
 	<ItemGroup Condition="'$(RepackDLLs)' == 'true'">
 		<PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.18.2" />
 	</ItemGroup>
-	<ItemGroup Condition="'$(GenerateModYAML)' == 'true'">
-		<PackageReference Include="Cairath.ONIMetadataFileGenerator" Version="1.0.0" />
-	</ItemGroup>
-	
 </Project>

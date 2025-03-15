@@ -19,7 +19,19 @@ namespace OutfitsIncluded.OutfitPacks
 				string path = Path.Combine(mod.ContentPath, OIPaths.OutfitPackDir);
 				if (!Directory.Exists(path)) { continue; }
 
-				Log.Info($"Found outfit pack: <{mod.staticID}>.");
+				// If an Outfit Pack mod is in the "dev" mods folder,
+				// change log level to at least debug.
+				// (Since OI has its own "Outfit Pack", it being in the dev folder
+				// will also trigger the change.)
+				if (mod.IsDev)
+				{
+					if (Log.CurrentLogLevel > Log.LogLevel.Debug)
+					{
+						Log.CurrentLogLevel = Log.LogLevel.Debug;
+					}
+				}
+
+				Log.WriteDebug($"Found outfit pack: <{mod.staticID}>.");
 				OutfitPack outfitPack = new OutfitPack(mod, path);
 				outfitPacks.Add(outfitPack);
 			}

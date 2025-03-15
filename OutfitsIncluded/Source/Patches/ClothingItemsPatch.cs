@@ -28,12 +28,12 @@ namespace OutfitsIncluded.Patches
 		{
 			public static void Postfix(ClothingItems __instance)
 			{
-				Log.Info("ClothingItems_Constructor_Patch.Postfix()");
+				Log.WriteMethodName();
 
 				ClothingItems clothingItemsDb = __instance;
 				if (clothingItemsDb == null)
 				{
-					Log.Error("ClothingItems_Constructor_Patch: ClothingItems is null.");
+					Log.WriteError("ClothingItems_Constructor_Patch: ClothingItems is null.");
 					return;
 				}
 

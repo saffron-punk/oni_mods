@@ -11,14 +11,9 @@ namespace OutfitsIncluded.Patches
 		{
 			public static void Prefix()
 			{
-				Log.Info("Db_Initialize_Patch.Prefix()");
+				Log.WriteMethodName();
 				ClothingItemsPatch.Patch(Core.OIMod.HarmonyInstance);
 				ClothingOutfitsPatch.Patch(Core.OIMod.HarmonyInstance);
-			}
-
-			public static void Postfix()
-			{
-				Log.Info("Db_Initialize_Patch.Postfix()");
 			}
 		}
 	}

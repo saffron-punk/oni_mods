@@ -13,7 +13,7 @@ namespace OutfitsIncluded.Patches
 	{
 		public static void Prefix()
 		{
-			Log.Info("SaveLoaderPatch:Prefix()");
+			Log.WriteMethodName();
 			foreach (OutfitRestorer outfitRestorer in OIMod.OutfitRestorers)
 			{
 				outfitRestorer.OnSaveStarted();
@@ -22,7 +22,7 @@ namespace OutfitsIncluded.Patches
 
 		public static void Postfix()
 		{
-			Log.Info("SaveLoaderPatch:Postfix()");
+			Log.WriteMethodName();
 			foreach (OutfitRestorer outfitRestorer in OIMod.OutfitRestorers)
 			{
 				outfitRestorer.OnSaveFinished();

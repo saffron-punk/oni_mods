@@ -18,13 +18,15 @@ namespace OutfitsIncluded.Core
 		// Sometimes they are null and referencing them will crash the game.
 		// So we will verify they are not null on every entrance to this script.
 #pragma warning disable CS0649 // Not assigned to
+#pragma warning disable IDE0044 // Add readonly modifier
 		[MyCmpGet] MinionIdentity identity;
 		[MyCmpGet] WearableAccessorizer accessorizer;
+#pragma warning restore IDE0044
 #pragma warning restore CS0649
 
 		protected override void OnSpawn()
 		{
-			Log.Info("\nOutfitRestorer:OnSpawn()");
+			Log.WriteMethodName();
 			if (!ValidateComponents()) { return; }
 
 			OIMod.OutfitRestorers.Add(this);
@@ -33,33 +35,33 @@ namespace OutfitsIncluded.Core
 
 		protected override void OnCleanUp()
 		{
-			Log.Info("OutfitRestorer:OnCleanUp()");
+			Log.WriteMethodName();
 			OIMod.OutfitRestorers.Remove(this);
 		}
 
 		public void OnSaveStarted()
 		{
-			Log.Info("OutfitRestorer:OnSaveStarted()");
+			Log.WriteMethodName();
 			if (!ValidateComponents()) { return; }
 			RemoveOIClothing();
 		}
 
 		public void OnSaveFinished()
 		{
-			Log.Info("OutfitRestorer:OnSaveFinished()");
+			Log.WriteMethodName();
 			if (!ValidateComponents()) { return; }
 			RestoreOIClothing();
 		}
 
 		private void RemoveOIClothing()
 		{
-			Log.Info("OutfitRestorer:RemoveOIClothing()");
-			Log.Info($"Processing: {identity.name}");
+			Log.WriteMethodName();
+			Log.WriteTrace($"Processing: {identity.name}");
 
 			// Clear old saved items.
 			savedClothingItems = new Dictionary<OutfitType, List<string>>();
 
-			Log.Info("Items before:");
+			Log.WriteTrace("Items before:");
 			PrintCurrentOutfitItems();
 
 			// We will avoid iterating OutfitType so we don't edit joy responses,
@@ -67,9 +69,9 @@ namespace OutfitsIncluded.Core
 			RemoveOIClothingByType(OutfitType.Clothing);
 			RemoveOIClothingByType(OutfitType.AtmoSuit);
 
-			Log.Info("Items after:");
+			Log.WriteTrace("Items after:");
 			PrintCurrentOutfitItems();
-			Log.Info("");
+			Log.WriteTrace("");
 		}
 
 		private void RemoveOIClothingByType(OutfitType outfitType)
@@ -89,7 +91,7 @@ namespace OutfitsIncluded.Core
 					continue;
 				}
 
-				Log.Info($"Removing OI item: ({itemId}).");
+				Log.WriteTrace($"Removing OI item: ({itemId}).");
 				SaveClothingItem(outfitType, itemId);
 				RemoveClothingItemFromDupe(outfitType, resource);
 			}
@@ -97,36 +99,36 @@ namespace OutfitsIncluded.Core
 
 		private void RestoreOIClothing()
 		{
-			Log.Info("OutfitRestorer:RestoreOIClothing()");
-			Log.Info($"Processing: {identity.name}");
+			Log.WriteMethodName();
+			Log.WriteTrace($"Processing: {identity.name}");
 			if (savedClothingItems.IsNullOrDestroyed() || savedClothingItems.Count == 0)
 			{
-				Log.Info("No saved outfit items to restore.");
+				Log.WriteTrace("No saved outfit items to restore.");
 				return;
 			}
 
-			Log.Info("Items before:");
+			Log.WriteTrace("Items before:");
 			PrintCurrentOutfitItems();
 
-			Log.Info("Saved items:");
+			Log.WriteTrace("Saved items:");
 			foreach ((OutfitType outfitType, List<string> itemIds) in savedClothingItems)
 			{
 				foreach (string itemId in itemIds)
 				{
 					if (!OIMod.OIItemResources.TryGetValue(itemId, out var resource))
 					{
-						Log.Error("No resource found for saved itemId={itemId}.");
+						Log.WriteError("No resource found for saved itemId={itemId}.");
 						continue;
 					}
 
-					Log.Info($"Restoring OI clothing item: {itemId} ({outfitType})");
+					Log.WriteTrace($"Restoring OI clothing item: {itemId} ({outfitType})");
 					AddClothingItemToDupe(outfitType, resource);
 				}
 			}
 
-			Log.Info("Items after:");
+			Log.WriteTrace("Items after:");
 			PrintCurrentOutfitItems();
-			Log.Info("");
+			Log.WriteTrace("");
 
 			RefreshDupeClothing();
 		}
@@ -171,7 +173,7 @@ namespace OutfitsIncluded.Core
 		{
 			if (identity == null || accessorizer == null)
 			{
-				Log.Error("Error: Components not assigned.");
+				Log.WriteDebug("Error: Components not assigned.");
 				return false;
 			}
 			return true;
@@ -179,24 +181,21 @@ namespace OutfitsIncluded.Core
 
 		private void PrintCurrentOutfitItems()
 		{
-#if DEBUG
+			if (Log.CurrentLogLevel > Log.LogLevel.Trace) { return; }
 			PrintOutfitItems(accessorizer.GetCustomClothingItems());
-#endif
 		}
 
 		private static void PrintOutfitItems(Dictionary<OutfitType, List<ResourceRef<ClothingItemResource>>> outfitItems)
 		{
-#if DEBUG
 			foreach (KeyValuePair<OutfitType, List<ResourceRef<ClothingItemResource>>> kvp in outfitItems)
 			{
-				Log.Info($"\t- {kvp.Key}");
+				Log.WriteTrace($"\t- {kvp.Key}");
 				foreach (ResourceRef<ClothingItemResource> itemRef in kvp.Value)
 				{
 					ClothingItemResource item = itemRef.Get();
-					Log.Info($"\t\t- {item.Id}");
+					Log.WriteTrace($"\t\t- {item.Id}");
 				}
 			}
-#endif
 		}
 	}
 }

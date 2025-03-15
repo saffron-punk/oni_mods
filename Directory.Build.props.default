@@ -5,6 +5,6 @@
 		<!--Gamedata Folder, adjust to your own ONI installation-->
 		<GameLibsDir>X:\SteamLibrary\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameLibsDir>
 		<!--OutputGameModDir, adjust it to your own dev folder-->
-		<GameModDir>X:\Documents\Klei\OxygenNotIncluded\mods\dev</GameModDir>
+		<GameModDir>X:\Documents\Klei\OxygenNotIncluded\mods</GameModDir>
 	</PropertyGroup>
 </Project>

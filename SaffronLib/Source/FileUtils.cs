@@ -18,7 +18,7 @@ namespace SaffronLib
 			}
 			catch (Exception e)
 			{
-				Log.Error($"Error loading {filepath}: {e}");
+				Log.WriteError($"Error loading {filepath}: {e}");
 			}
 			return s;
 		}

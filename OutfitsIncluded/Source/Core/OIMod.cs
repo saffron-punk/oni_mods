@@ -26,6 +26,11 @@ namespace OutfitsIncluded.Core
 			ModPath = path;
 
 			Log.SetModName(mod.staticID);
+#if DEBUG
+			Log.CurrentLogLevel = Log.LogLevel.Trace;
+#else
+			Log.CurrentLogLevel = Log.LogLevel.Info;
+#endif
 
 			//base.OnLoad(harmony); // PatchAll()
 		}
@@ -35,10 +40,14 @@ namespace OutfitsIncluded.Core
 			OutfitPacks = OutfitPackLoader.LoadAll(mods);
 			if (OutfitPacks.Count == 0)
 			{
-				Log.Status("No outfit packs found.");
+				Log.WriteWarning("No outfit packs found.");
 				return;
 			}
-			Log.Info($"Found {OutfitPacks.Count} outfit packs.");
+			Log.WriteInfo($"Found {OutfitPacks.Count} outfit packs:");
+			foreach (OutfitPack outfitPack in OutfitPacks)
+			{
+				Log.WriteInfo($"\t- {outfitPack.Id}");
+			}
 
 			foreach (OutfitPack outfitPack in OutfitPacks)
 			{
@@ -51,14 +60,15 @@ namespace OutfitsIncluded.Core
 
 			if (OIOutfitPack == null)
 			{
-				Log.Warning("No Outfits Included outfit pack found.");
+				Log.WriteWarning("No Outfits Included outfit pack found.");
 			}
 			else
 			{
-				// Ensure that this mod's items are always parsed last.
+				// Ensure that this mod's items are always added last.
 				OutfitPacks.Remove(OIOutfitPack);
 				OutfitPacks.Add(OIOutfitPack);
 			}
+
 			harmony.PatchAll(assembly);
 		}
 	}

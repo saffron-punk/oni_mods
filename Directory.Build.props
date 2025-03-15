@@ -18,9 +18,10 @@
 		<Jan25Hotfix3>650327</Jan25Hotfix3>
 		<Jan25Hotfix4>651155</Jan25Hotfix4>
 		<Feb25Hotfix>652372</Feb25Hotfix>
+		<Mar25QOL>659901</Mar25QOL>
+		<Mar25Hotfix>660272</Mar25Hotfix>
+		<Mar25Hotfix2>660455</Mar25Hotfix2>
 		<!--Latest-->
-		<TargetGameVersion>$(Feb25Hotfix)</TargetGameVersion>
+		<TargetGameVersion>$(Mar25Hotfix2)</TargetGameVersion>
 	</PropertyGroup>
-
-	
 </Project>

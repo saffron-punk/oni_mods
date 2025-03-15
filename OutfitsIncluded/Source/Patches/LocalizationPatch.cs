@@ -12,7 +12,7 @@ namespace OutfitsIncluded.Patches
 			[HarmonyPriority(Priority.VeryLow)]
 			public static void Postfix()
 			{
-				Log.Info("Localization_Initialize_Patch.Postfix()");
+				Log.WriteMethodName();
 				LocalizationUtils.RegisterForTranslation(
 					typeof(OutfitsIncluded.STRINGS),
 					OIMod.ModPath);

@@ -10,6 +10,9 @@ namespace OutfitsIncluded
 				$"Part of " +
 				$"<i><color={OUTFIT_PACK_COLOR_TAG}>{OUTFIT_PACK_NAME_TAG}</color></i> " +
 				$"(added by <b>Outfits Included</b>).";
+
+			public static LocString SELF_DESCRIPTION_ATTR =
+				$"Added by <b>Outfits Included</b>.";
 		}
 	}
 }
