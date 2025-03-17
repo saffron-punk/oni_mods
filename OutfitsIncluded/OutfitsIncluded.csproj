@@ -6,7 +6,7 @@
 		<AssemblyName>OutfitsIncluded</AssemblyName>
 		<PackageId>Saffron.OutfitsIncluded</PackageId>
 		<RootNamespace>OutfitsIncluded</RootNamespace>
-		<Version>0.4.0</Version>
+		<Version>0.5.0</Version>
 	</PropertyGroup>
 
 	<!-- Mod Properties -->

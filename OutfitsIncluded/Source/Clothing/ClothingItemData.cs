@@ -1,8 +1,6 @@
 ﻿using Database;
 using Newtonsoft.Json;
-using SaffronLib;
 using System;
-using System.Collections.Generic;
 using static OutfitsIncluded.Clothing.CategoryMaps;
 
 namespace OutfitsIncluded.Clothing
@@ -10,10 +8,10 @@ namespace OutfitsIncluded.Clothing
 	public class ClothingItemData : ClothingData
 	{
 		public PermitCategory Category { get; private set; }
+		public string Subcategory { get; private set; }
 		public ClothingOutfitUtility.OutfitType OutfitType { get; private set; }
 		public string Kanim { get; private set; }
 
-		private string _subcategory { get; set; }
 		private ClothingItemResource _resource;
 
 		[JsonConstructor]
@@ -45,7 +43,7 @@ namespace OutfitsIncluded.Clothing
 			}
 
 			// If blank or invalid, will change to default subcategory later.
-			_subcategory = subcategory;
+			Subcategory = subcategory;
 
 			if (kanim.IsNullOrWhiteSpace())
 			{
@@ -56,7 +54,6 @@ namespace OutfitsIncluded.Clothing
 				Kanim = kanim;
 			}
 
-			// TODO: Put in try/catch block
 			if (Assets.GetAnim(Kanim) == null)
 			{
 				MakeInvalid($"No kanim found with name '{Kanim}'");
@@ -106,30 +103,6 @@ namespace OutfitsIncluded.Clothing
 					forbiddenDlcIds: null);
 			}
 			return _resource;
-		}
-
-		public HashSet<string> GetSupplyClosetItemIdsSet()
-		{
-			if (_subcategory.IsNullOrWhiteSpace() ||
-				!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
-						_subcategory, out HashSet<string> itemIdsSet))
-			{
-				if (!DefaultSubcategories.TryGetValue(
-					Category, out string defaultSubcategory))
-				{
-					Log.WriteError($"Provided subcategory ({_subcategory}) is null or invalid, " +
-						$"and no default subcategory found for category {Category}.");
-					return null;
-				}
-				Log.WriteDebug($"Using default subcategory for {Id}.");
-				if (!InventoryOrganization.subcategoryIdToPermitIdsMap.TryGetValue(
-					defaultSubcategory, out itemIdsSet))
-				{
-					Log.WriteError($"Item ids set for subcategory '{defaultSubcategory}' not found.");
-					return null;
-				}
-			}
-			return itemIdsSet;
 		}
 	}
 }

@@ -73,14 +73,6 @@ namespace OutfitsIncluded.Patches
 			ClothingOutfitData outfit,
 			ClothingItems allClothingItems)
 		{
-			if (!CategoryMaps.OutfitItemCategories.TryGetValue(
-				outfit.OutfitType, out List<PermitCategory> expectedItemCategories))
-			{
-				Log.WriteWarning($"No expected categories found for outfit type={outfit.OutfitType}");
-			}
-
-			var missingCategories = new List<PermitCategory>(expectedItemCategories);
-
 			bool isValid = true;
 			foreach (string itemId in outfit.ItemIds)
 			{
@@ -96,40 +88,11 @@ namespace OutfitsIncluded.Patches
 					Log.WriteError($"Mismatched outfit and item types: '{outfit.Id}'={outfit.OutfitType} and item '{itemId}'={itemResource.outfitType}.");
 					isValid = false;
 				}
-				else
-				{
-					missingCategories.Remove(itemResource.Category);
-				}
 			}
 
 			if (!isValid)
 			{
 				return false;
-			}
-
-			// We will add empty placeholder items to outfits that are missing items in a category.
-			// Without doing this, outfits will behave correctly when applied to dupes,
-			// but, when edited, ONI will add the default items in place of missing items.
-			// (For now, we will stick to the atmo belt. Plan to add others if needed in the future.)
-			Log.WriteTrace($"Outfit {outfit.Id} is missing {missingCategories.Count} categories");
-			foreach (PermitCategory category in missingCategories)
-			{
-				if (!OIConstants.EMPTY_CLOTHING_ITEM_IDS.TryGetValue(category, out string emptyItemId))
-				{
-					Log.WriteTrace($"Unable to find empty item for missing category {category}.");
-					continue;
-				}
-
-				// Make sure the empty item Id exists.
-				ClothingItemResource emptyItemResource = allClothingItems.resources.Find(x => x.Id == emptyItemId);
-				if (emptyItemResource == null)
-				{
-					Log.WriteWarning($"No resource found for empty clothing item {emptyItemId}");
-					continue;
-				}
-
-				Log.WriteDebug($"\tAdding {emptyItemId} for {category}");
-				outfit.AddItemId(emptyItemId);
 			}
 			return true;
 		}

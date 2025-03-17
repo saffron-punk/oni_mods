@@ -36,14 +36,14 @@
 		{
 			"category": "AtmoSuitHelmet",
 			"description": "A blaster-proof helmet for the most daring space adventures.",
-			"id": "asp_radbolt_adventurer_atmo_helmet",
-			"name": "Adventurer Helmet (Radbolt)"
+			"id": "asp_gravitas_adventurer_atmo_helmet",
+			"name": "Adventurer Helmet (Gravitas)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
 			"description": "A blaster-proof helmet for the most daring space adventures.",
-			"id": "asp_gravitas_adventurer_atmo_helmet",
-			"name": "Adventurer Helmet (Gravitas)"
+			"id": "asp_radbolt_adventurer_atmo_helmet",
+			"name": "Adventurer Helmet (Radbolt)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
@@ -87,14 +87,14 @@
 		{
 			"category": "AtmoSuitBody",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
-			"id": "asp_radbolt_adventurer_atmo_body",
-			"name": "Adventurer Jumpsuit (Radbolt)"
+			"id": "asp_gravitas_adventurer_atmo_body",
+			"name": "Adventurer Jumpsuit (Gravitas)"
 		},
 		{
 			"category": "AtmoSuitBody",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
-			"id": "asp_gravitas_adventurer_atmo_body",
-			"name": "Adventurer Jumpsuit (Gravitas)"
+			"id": "asp_radbolt_adventurer_atmo_body",
+			"name": "Adventurer Jumpsuit (Radbolt)"
 		},
 		{
 			"category": "AtmoSuitBody",
@@ -108,56 +108,48 @@
 		// ---------------------------------------------------
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_red_adventurer_top",
 			"name": "Adventurer Jumpsuit (Red)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_pink_adventurer_top",
 			"name": "Adventurer Jumpsuit (Pink)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_yellow_adventurer_top",
 			"name": "Adventurer Jumpsuit (Yellow)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_blue_adventurer_top",
 			"name": "Adventurer Jumpsuit (Blue)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_orange_adventurer_top",
 			"name": "Adventurer Jumpsuit (Orange)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
-			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
-			"id": "asp_radbolt_adventurer_top",
-			"name": "Adventurer Jumpsuit (Radbolt)"
-		},
-		{
-			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_gravitas_adventurer_top",
 			"name": "Adventurer Jumpsuit (Gravitas)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
+			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
+			"id": "asp_radbolt_adventurer_top",
+			"name": "Adventurer Jumpsuit (Radbolt)"
+		},
+		{
+			"category": "DupeTops",
 			"description": "Sturdy elastic suspenders keep your pants on so you can keep on adventuring.",
 			"id": "asp_bionic_adventurer_top",
 			"name": "Adventurer Jumpsuit (Bionic)"
@@ -167,49 +159,49 @@
 		// ---------------------------------------------------
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_red_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Red)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_pink_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Pink)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_yellow_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Yellow)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_blue_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Blue)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_orange_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Orange)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
-			"id": "asp_radbolt_cadet_atmo_helmet",
-			"name": "Cadet Helmet (Radbolt)"
-		},
-		{
-			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_gravitas_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Gravitas)"
 		},
 		{
 			"category": "AtmoSuitHelmet",
-			"description": "Never get lost in space again with a built-in radar and 360-degree views.",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
+			"id": "asp_radbolt_cadet_atmo_helmet",
+			"name": "Cadet Helmet (Radbolt)"
+		},
+		{
+			"category": "AtmoSuitHelmet",
+			"description": "Never get lost in space again with a built-in antenna and 360-degree views.",
 			"id": "asp_bionic_cadet_atmo_helmet",
 			"name": "Cadet Helmet (Bionic)"
 		},
@@ -249,14 +241,14 @@
 		{
 			"category": "AtmoSuitBody",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
-			"id": "asp_radbolt_cadet_atmo_body",
-			"name": "Cadet Jumpsuit (Radbolt)"
+			"id": "asp_gravitas_cadet_atmo_body",
+			"name": "Cadet Jumpsuit (Gravitas)"
 		},
 		{
 			"category": "AtmoSuitBody",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
-			"id": "asp_gravitas_cadet_atmo_body",
-			"name": "Cadet Jumpsuit (Gravitas)"
+			"id": "asp_radbolt_cadet_atmo_body",
+			"name": "Cadet Jumpsuit (Radbolt)"
 		},
 		{
 			"category": "AtmoSuitBody",
@@ -272,60 +264,53 @@
 
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_red_cadet_top",
 			"name": "Cadet Jumpsuit (Red)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_pink_cadet_top",
 			"name": "Cadet Jumpsuit (Pink)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_yellow_cadet_top",
 			"name": "Cadet Jumpsuit (Yellow)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_blue_cadet_top",
 			"name": "Cadet Jumpsuit (Blue)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
-			"id": "asp_radbolt_cadet_top",
-			"name": "Cadet Jumpsuit (Radbolt)"
+			"id": "asp_orange_cadet_top",
+			"name": "Cadet Jumpsuit (Orange)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_gravitas_cadet_top",
 			"name": "Cadet Jumpsuit (Gravitas)"
 		},
 		{
 			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
+			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
+			"id": "asp_radbolt_cadet_top",
+			"name": "Cadet Jumpsuit (Radbolt)"
+		},
+		{
+			"category": "DupeTops",
 			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
 			"id": "asp_bionic_cadet_top",
 			"name": "Cadet Jumpsuit (Bionic)"
 		},
-		{
-			"category": "DupeTops",
-			"subcategory": "CLOTHING_TOPS_DRESS",
-			"description": "Aerodynamic spandex and state-of-the-art ribbing will make you the envy of the fleet.",
-			"id": "asp_orange_cadet_top",
-			"name": "Cadet Jumpsuit (Orange)"
-		},
+
 		// ---------------------------------------------------
 		// GRIPWELL GLOVES
 		// ---------------------------------------------------

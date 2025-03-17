@@ -11,7 +11,6 @@ namespace OutfitsIncluded.OutfitPacks
 		public KMod.Mod Mod { get; }
 		public string DirPath { get; }
 		private string _translationsPath;
-		private bool _localizationUsed;
 
 		public string Id { get => Mod.staticID; }
 

@@ -4,12 +4,13 @@ WIP
 Outfits Included is a mod loader for Outfit Pack mods, which add Supply Closet clothing and atmo suits to Oxygen Not Included. It allows modders to add new dupe clothing to the game without programming or compiling DLLs.
 
 #### Features
-- Adding clothing and atmo suit items and outfits to the Supply Closet.
-- Safe save functions. (Uninstalling Outfits Included or any Outfit Pack mods will not prevent loading the save file.)
-- Translations support.
+- Adds clothing and atmo suit items and outfits from Outfit Pack mods to the Supply Closet.
+- Uses safe save functions so you can uninstall Outfits Included or any Outfit Pack mods at any time and still open the save file.
+- Loads translations for Outfit Packs.
 
 #### Attributions
 - Blueprint loading and safe save functions are based off of [Aki's mods](https://github.com/aki-art/ONI-Mods) (including Decor Pack I and Spooky Pumpkin).
+- The Outfit Pack hanger icon is adapted from [The Noun Project's "Coat Check" icon (CC0](https://commons.wikimedia.org/wiki/File:Coat_Check_-_The_Noun_Project.svg).
 
 
 ### How ONI clothing works
@@ -34,6 +35,7 @@ To make a mod an "outfit pack", your mod folder needs to contain a folder called
         mod.yaml
         mod_info.yaml
         anim/assets/
+            prefix_outfitpackexamplemod_icon/ // Kanim for the icon to use for the Outfit Pack's subcategory
         outfits_included/
             clothing_items.json
             clothing_outfits.json
@@ -61,7 +63,7 @@ To make a mod an "outfit pack", your mod folder needs to contain a folder called
     }
 
 
-#### Categories
+#### Category (required)
 The value should match a key from ONI's Database.PermitCategory enum (case-sensitive).
 
 See also: CategoryMaps.cs
@@ -76,10 +78,16 @@ See also: CategoryMaps.cs
 - AtmoSuitBelt
 - AtmoSuitShoes
 
-#### Subcategories (optional)
+#### Subcategory (optional)
+By default, OI will create a custom subcategory for the Outfit Pack for every category that the outfit pack uses.
+
+It will also look for a custom icon for the Outfit Pack to use in the subcategory header. This is optional. It should be named after the mod's static ID, with "." changed to "_", and all letters changed to lowercase, plus the suffix "_icon". For example, Saffron.AtomicSuitsPack becomes saffron_atomicsuitspack_icon.
+
+Alternatively, if a value for subcategory is specified, and the subcategory exists, OI will place the item in that category instead.
+
 The value should match a constant from ONI's InventoryOrganization.PermitSubcategories class (case-sensitive). If the value is not given or is not found, OI will assign the relevant "basic" subcategory.
 
-Note: ONI defines certain subcategories source code but doesn't use them (yet). These include the fancy atmosuit categories. If a clothing item's "subcategory" value references an existing subcategory that ONI hasn't set up, it will revert to the default subcategory and print a warning in player.log.
+Note: ONI defines certain subcategories source code but doesn't use them (yet). These include the fancy atmosuit categories.
 
 See also: CategoryMaps.cs
 
@@ -127,7 +135,7 @@ See also: CategoryMaps.cs
                     "prefix_example_atmo_shoes",
                 ],
                 "name": "asp_adventurer_atmosuit",
-                "type": "AtmoSuit"
+                "type": "AtmoSuit" // required
             }
         ]
     }
@@ -138,7 +146,7 @@ These will usually contain items from this mod. But it can also contain item IDs
 If you use ONI clothing items that are in a DLC that the user does not own or are an incentive blueprint the user doesn't have, the outfit won't show up in the duplicant clothing tab. It will still show up in the supply closet outfits panel with a locked icon.
 
 
-#### Type
+#### Type (required)
 Should match keys in the ClothingOutfitUtility.OutfitType enum (case-sensitive).
 
 - Clothing

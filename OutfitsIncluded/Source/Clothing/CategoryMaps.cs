@@ -36,27 +36,6 @@ namespace OutfitsIncluded.Clothing
 			{ PermitCategory.AtmoSuitBelt, ClothingOutfitUtility.OutfitType.AtmoSuit },
 			{ PermitCategory.AtmoSuitShoes, ClothingOutfitUtility.OutfitType.AtmoSuit },
 		};
-
-		public static readonly Dictionary<ClothingOutfitUtility.OutfitType, List<PermitCategory>> OutfitItemCategories = new Dictionary<ClothingOutfitUtility.OutfitType, List<PermitCategory>>()
-		{
-			{ ClothingOutfitUtility.OutfitType.Clothing, new List<PermitCategory>()
-				{
-					PermitCategory.DupeTops,
-					PermitCategory.DupeBottoms,
-					PermitCategory.DupeGloves,
-					PermitCategory.DupeShoes,
-				}
-			},
-			{ ClothingOutfitUtility.OutfitType.AtmoSuit, new List<PermitCategory>()
-				{
-					PermitCategory.AtmoSuitHelmet,
-					PermitCategory.AtmoSuitBody,
-					PermitCategory.AtmoSuitGloves,
-					PermitCategory.AtmoSuitBelt,
-					PermitCategory.AtmoSuitShoes,
-				}
-			}
-		};
 	}
 }
 
