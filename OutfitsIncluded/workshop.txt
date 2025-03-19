@@ -1,0 +1,62 @@
+[h1]Outfits Included[/h1]
+A mod loader for [i]Outfit Pack[/i] mods. [i]Outfit Packs[/i] add new dupe clothing and atmo suit Blueprints to the Supply Closet.
+
+[i]Outfits Included uses the same UI as ONI's base game/DLC/incentive Blueprint skins. But, if you haven't customized a dupe's clothing before, it can be tricky to figure out which buttons to press. See the screenshots for step-by-step directions.[/i]
+
+[hr][/hr]
+
+[h1]Features[/h1]
+[list]
+[*] Loads [i]Outfit Pack[/i] outfits, clothing, atmo suits, and translations.
+[*] Uses safe save functions so uninstalling Outfits Included or an [i]Outfit Pack[/i] will not break save files.
+[*] Adds an invisible atmo belt option.
+[/list]
+
+[hr][/hr]
+
+[h1]Available Outfit Packs[/h1]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3447554654]Atomic Suits Pack[/url]
+[/list]
+
+[hr][/hr]
+
+[h1]Compatibility[/h1]
+Outfits Included does not change any base game behaviors, so it should be compatible with most other mods, including:
+[list]
+[*] Mods that add new dupes and hairstyles via [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3172734005]Dupery Fixed[/url].
+[*] Mods that allow editing the dupe's default clothing, such as [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2856555858]Duplicant Stat Selector[/url].
+[*] Mods that add Blueprints for clothing or buildings, such as [url=https://steamcommunity.com/id/akisnothere/myworkshopfiles/]Aki's decor mods[/url].
+[/list]
+
+Please report any mod conflicts to [url=https://github.com/saffron-punk/oni_mods/issues]github.com/saffron-punk/oni_mods/issues[/url].
+
+[hr][/hr]
+
+[h1]Support[/h1]
+Both Oxygen Not Included and Steam Workshop have bugs related to mod updating. Before reporting an error, please use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2018291283]Mod Updater[/url] and make sure that the latest version of this mod is installed.
+
+Please report problems on Github: [url=https://github.com/saffron-punk/oni_mods/issues]github.com/saffron-punk/oni_mods/issues[/url] (include the [i]player.log[/i] file).
+
+[hr][/hr]
+
+[h1]Make your own Outfit Pack[/h1]
+Outfits Included lets modders add clothing skins to the game without having to program or compile DLLs. This means that modders can focus on the hard part: the artwork.
+
+[i]Outfit Pack[/i] mods contain "kanims" (sprites) and JSON (text) files. The JSON files assign names and kanims to new clothing items, and assign clothing items to new outfits. When you upload the mod to Steam Workshop, make sure that Outfits Included is listed as a requirement, and it will do the rest of the work adding the clothing Blueprints to the game.
+
+See the [url=https://github.com/saffron-punk/oni_mods/tree/main/OutfitsIncluded]Github repo[/url] for more information.
+
+[hr][/hr]
+
+[h1]Attributions[/h1]
+[list]
+[*] Blueprint loading and safe save functions are adapted from [url=https://github.com/aki-art/ONI-Mods]Aki's mods[/url] (Decor Pack I and Spooky Pumpkin). Huge thanks to Aki for making the code available on Github.
+[*] The Outfit Pack hanger icon is adapted from The Noun Project's [url=https://commons.wikimedia.org/wiki/File:Coat_Check_-_The_Noun_Project.svg]"Coat Check" icon[/url] (CC0).
+[*] The thumbnail uses [url=https://fontdation.com/westmeath/]Westmeath[/url] font and artwork from Oxygen Not Included.
+[/list]
+
+[hr][/hr]
+
+[h1]Source[/h1]
+Available at [url=https://github.com/saffron-punk/oni_mods]github.com/saffron-punk/oni_mods[/url] (MIT license).

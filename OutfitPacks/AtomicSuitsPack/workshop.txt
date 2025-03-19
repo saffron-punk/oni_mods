@@ -1,0 +1,14 @@
+[h1]Atomic Suits Pack[/h1]
+Dupe clothing and atmo suits inspired by Atomic Age (~1950s) pulp sci-fi. An Outfit Pack for Outfits Included. (See [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3447551899]Outfits Included[/url] for more information about using Outfit Packs.)
+
+[hr][/hr]
+
+[h1]Support[/h1]
+Both Oxygen Not Included and Steam Workshop have bugs related to mod updating. Before reporting an error, please use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2018291283]Mod Updater[/url] and make sure that the latest version of this mod is installed.
+
+Please report problems on Github: [url=https://github.com/saffron-punk/oni_mods/issues]github.com/saffron-punk/oni_mods/issues[/url] (include the [i]player.log[/i] file).
+
+[hr][/hr]
+
+[h1]Source[/h1]
+Available at [url=https://github.com/saffron-punk/oni_mods]github.com/saffron-punk/oni_mods[/url] (MIT license).

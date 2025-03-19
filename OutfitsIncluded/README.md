@@ -1,4 +1,4 @@
-WIP
+Want to create your own Outfit Pack mod? See below for details (WIP). For questions or more information, free to tag me @Saffron on the [Oxygen Not Included](https://discord.gg/oxygennotincluded) discord or [Mods Not Included](https://discord.gg/HKJSecTf) discords.
 
 ## Description
 Outfits Included is a mod loader for Outfit Pack mods, which add Supply Closet clothing and atmo suits to Oxygen Not Included. It allows modders to add new dupe clothing to the game without programming or compiling DLLs.
